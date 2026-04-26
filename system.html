@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The System — Saving.Careers</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --accent: #00ff88;
+      --gray-300: #999;
+      --gray-500: #666;
+      --gray-800: #1a1a1a;
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    
+    /* Nav */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-800);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      color: var(--fg);
+    }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-back {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--gray-300);
+      letter-spacing: 0.15em;
+      padding: 10px 20px;
+      border: 1px solid var(--gray-800);
+      transition: all 0.2s;
+    }
+    .nav-back:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+    }
+    
+    /* Hero */
+    .page-hero {
+      padding: 180px 40px 120px;
+      max-width: 1400px;
+      margin: 0 auto;
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .page-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.25em;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .page-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+    }
+    .page-title {
+      font-size: clamp(48px, 8vw, 120px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      text-wrap: balance;
+    }
+    .page-title .accent { color: var(--accent); }
+    .page-sub {
+      font-size: 22px;
+      color: var(--gray-300);
+      max-width: 700px;
+      line-height: 1.5;
+    }
+    
+    /* Content */
+    section.content {
+      padding: 100px 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .section-num {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+      letter-spacing: 0.25em;
+      margin-bottom: 24px;
+    }
+    h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.05;
+      margin-bottom: 48px;
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    
+    /* Protocol grid */
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+      border: 1px solid var(--gray-800);
+    }
+    .protocol-card {
+      background: var(--bg);
+      padding: 48px 40px;
+      transition: background 0.3s;
+    }
+    .protocol-card:hover {
+      background: var(--gray-800);
+    }
+    .protocol-num {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 0.2em;
+      margin-bottom: 20px;
+    }
+    .protocol-card p {
+      color: var(--gray-300);
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .protocol-card ul {
+      list-style: none;
+    }
+    .protocol-card li {
+      color: var(--gray-300);
+      font-size: 13px;
+      padding: 8px 0;
+      border-top: 1px solid var(--gray-800);
+      font-family: var(--font-mono);
+    }
+    .protocol-card li::before {
+      content: '→ ';
+      color: var(--accent);
+    }
+    
+    /* Tools section */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .tool-card {
+      border: 1px solid var(--gray-800);
+      padding: 32px;
+      transition: all 0.3s;
+    }
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .tool-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+    .tool-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .tool-card p { color: var(--gray-300); font-size: 14px; line-height: 1.6; }
+    
+    /* FAQ */
+    .faq-list {
+      max-width: 900px;
+    }
+    details {
+      border-bottom: 1px solid var(--gray-800);
+      padding: 24px 0;
+    }
+    summary {
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 500;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-family: var(--font-mono);
+      color: var(--accent);
+      font-size: 24px;
+      transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+    details p {
+      color: var(--gray-300);
+      margin-top: 16px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    
+    /* CTA */
+    .cta-block {
+      text-align: center;
+      padding: 120px 40px;
+      border-top: 1px solid var(--gray-800);
+      background: radial-gradient(ellipse at center, rgba(0,255,136,0.08), transparent 70%);
+    }
+    .cta-block h2 {
+      font-size: clamp(40px, 6vw, 72px);
+      margin-bottom: 24px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--accent);
+      color: #000;
+      padding: 20px 40px;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+    }
+    
+    /* Footer */
+    footer {
+      padding: 60px 40px 40px;
+      border-top: 1px solid var(--gray-800);
+      text-align: center;
+      color: var(--gray-500);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.15em;
+    }
+    
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .page-hero, section.content { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">SAVING<span class="dot">.</span>CAREERS</a>
+    <a href="index.html" class="nav-back">← BACK TO HOME</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-eyebrow">[01] SYSTEM OVERVIEW</div>
+    <h1 class="page-title">The <span class="accent">protocol</span> that rebuilds careers.</h1>
+    <p class="page-sub">Not another course. Not motivational content. A structured, daily operating system for professionals navigating AI disruption — built on 5 compounding phases.</p>
+  </section>
+
+  <section class="content" id="protocol">
+    <div class="section-num">[02] THE PROTOCOL</div>
+    <h2>Five phases. Ninety days.<br/>One integrated system.</h2>
+    
+    <div class="protocol-grid">
+      <div class="protocol-card">
+        <div class="protocol-num">PHASE 01 • 14 DAYS</div>
+        <h3>Assess Reality</h3>
+        <p>Data-driven audit of which tasks AI has already replaced in your role, which are next, and which are defensible.</p>
+        <ul>
+          <li>Automated task inventory</li>
+          <li>Market risk score</li>
+          <li>Leverage mapping</li>
+          <li>Competitive positioning</li>
+        </ul>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-num">PHASE 02 • 7 DAYS</div>
+        <h3>Reset Vector</h3>
+        <p>Clear destination: role, industry, income level — calculated from your existing skills and market signals.</p>
+        <ul>
+          <li>Target role matrix</li>
+          <li>Income projection</li>
+          <li>Transition timeline</li>
+          <li>Risk adjustments</li>
+        </ul>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-num">PHASE 03 • 30 DAYS</div>
+        <h3>Build Arsenal</h3>
+        <p>Curated learning paths that compound. 2 hours daily, portfolio-first. No padding, no fluff.</p>
+        <ul>
+          <li>Skill stack design</li>
+          <li>Daily practice schedule</li>
+          <li>Portfolio project plan</li>
+          <li>Progress benchmarks</li>
+        </ul>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-num">PHASE 04 • ONGOING</div>
+        <h3>Execute Daily</h3>
+        <p>Structured tasks that compound. Morning ritual, skill practice, outreach, review — framework until momentum takes over.</p>
+        <ul>
+          <li>Daily command protocol</li>
+          <li>Outreach templates</li>
+          <li>Accountability system</li>
+          <li>Weekly retrospectives</li>
+        </ul>
+      </div>
+      <div class="protocol-card">
+        <div class="protocol-num">PHASE 05 • 90 DAYS</div>
+        <h3>Deploy Income</h3>
+        <p>First paying client in 30 days. Multiple streams by day 90. Career insurance that compounds.</p>
+        <ul>
+          <li>Pricing & positioning</li>
+          <li>Client acquisition playbook</li>
+          <li>Multi-stream setup</li>
+          <li>Recurring revenue focus</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="tools">
+    <div class="section-num">[03] TOOLS & TEMPLATES</div>
+    <h2>Every asset. Every template.<br/>Already built.</h2>
+    
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-icon">R</div>
+        <h3>Risk Calculator</h3>
+        <p>Enter your role. Get a 60-second AI-disruption risk score with granular task breakdown.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">S</div>
+        <h3>Resume Scanner</h3>
+        <p>Upload your resume. AI analyzes for market fit, keyword gaps, and positioning errors.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">P</div>
+        <h3>Portfolio Templates</h3>
+        <p>12 proven portfolio structures. Copy, customize, deploy — ready in hours, not weeks.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">O</div>
+        <h3>Outreach Playbook</h3>
+        <p>50+ tested email templates. Cold outreach, warm intros, follow-ups — all conversion-optimized.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">T</div>
+        <h3>Daily Tracker</h3>
+        <p>Notion template for daily protocol execution. Track skills, outreach, wins, and recovery score.</p>
+      </div>
+      <div class="tool-card">
+        <div class="tool-icon">D</div>
+        <h3>Discord Access</h3>
+        <p>Private community of 12,483 professionals actively executing the system. Weekly live calls.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="faq">
+    <div class="section-num">[04] FAQ</div>
+    <h2>Questions, answered.</h2>
+    
+    <div class="faq-list">
+      <details open>
+        <summary>How is this different from a career coach?</summary>
+        <p>Coaches give advice. We give a system. You follow the same daily protocol that's worked for 12,000+ professionals — no guessing, no subjectivity. Software + playbook + community.</p>
+      </details>
+      <details>
+        <summary>Do I need to be unemployed to join?</summary>
+        <p>No. The system works as career insurance for employed professionals seeing automation in their role, or active recovery for those already displaced. Phase 01 adjusts to your starting point.</p>
+      </details>
+      <details>
+        <summary>What industries does this work for?</summary>
+        <p>Knowledge work where AI disruption is active: marketing, content, design, software, analytics, customer support, admin, consulting. We have industry-specific playbooks for each.</p>
+      </details>
+      <details>
+        <summary>How much time does it require daily?</summary>
+        <p>Minimum 90 minutes. Recommended 2 hours. The system is designed to slot into existing work schedules — early mornings, evenings, or dedicated transition time.</p>
+      </details>
+      <details>
+        <summary>Can I cancel anytime?</summary>
+        <p>Yes. Month-to-month. Keep all tools and resources you've accessed. 30-day money-back guarantee on your first month.</p>
+      </details>
+      <details>
+        <summary>What results can I expect?</summary>
+        <p>Members typically hit first paying client or income stream within 30-45 days. 78% report income recovery or upgrade within 90 days. Results vary based on starting point and execution consistency.</p>
+      </details>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <h2>Stop guessing.<br/>Start executing.</h2>
+    <p style="color: var(--gray-300); margin-bottom: 40px; font-size: 18px;">Join 12,483 professionals running the protocol.</p>
+    <a href="index.html#email-signup" class="btn-primary">ACTIVATE SYSTEM →</a>
+  </section>
+
+  <footer>
+    SAVING.CAREERS // © 2025 // ALL_RIGHTS_RESERVED
+  </footer>
+
+</body>
+</html>

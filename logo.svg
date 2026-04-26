@@ -1,0 +1,31 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <rect width="512" height="512" fill="#000000"></rect>
+  
+  
+  <defs>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#1a1a1a" stroke-width="1"></path>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="url(#grid)" opacity="0.3"></rect>
+  
+  
+  <g transform="translate(256, 256)">
+    
+    <path d="M -60 -80 Q -80 -60 -80 -30 Q -80 0 -60 20 Q -40 40 0 40 Q 40 40 60 20 Q 80 0 80 -30" stroke="#00ff88" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+    
+    
+    <path d="M 0 40 L 0 100" stroke="#00ff88" stroke-width="16" stroke-linecap="round"></path>
+    
+    <path d="M -30 70 L 0 40 L 30 70" stroke="#00ff88" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+    
+    
+    <circle cx="100" cy="-80" r="8" fill="#ff3366"></circle>
+  </g>
+  
+  
+  <text x="256" y="420" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="32" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="4">SAVING</text>
+  
+  <text x="256" y="455" font-family="&#39;Space Grotesk&#39;, sans-serif" font-size="32" font-weight="700" fill="#00ff88" text-anchor="middle" letter-spacing="4">CAREERS</text>
+</svg>

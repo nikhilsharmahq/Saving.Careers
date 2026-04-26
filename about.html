@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Saving.Careers</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="page.css">
+  <style>
+    .principle {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--gray-800);
+      align-items: start;
+    }
+    .principle-num { font-family: var(--font-mono); font-size: 14px; color: var(--accent); letter-spacing: 0.2em; }
+    .principle h3 { font-size: 32px; margin-bottom: 16px; letter-spacing: -0.01em; }
+    .principle p { color: var(--gray-300); font-size: 17px; line-height: 1.7; max-width: 700px; }
+    .job-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr auto;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gray-800);
+      align-items: center;
+    }
+    .job-row h4 { font-size: 18px; }
+    .job-meta { font-family: var(--font-mono); font-size: 12px; color: var(--gray-300); letter-spacing: 0.1em; }
+    .job-btn {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em;
+      padding: 10px 20px; border: 1px solid var(--gray-800); color: var(--fg);
+      transition: all 0.2s;
+    }
+    .job-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; }
+    .contact-item h4 { font-family: var(--font-mono); font-size: 11px; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 12px; }
+    .contact-item p, .contact-item a { font-size: 18px; color: var(--fg); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">SAVING<span class="dot">.</span>CAREERS</a>
+    <a href="index.html" class="nav-back">← BACK TO HOME</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-eyebrow">[04] ABOUT</div>
+    <h1 class="page-title">Built for the <span class="accent">displaced.</span></h1>
+    <p class="page-sub">Careers are being restructured faster than any individual can adapt alone. We build the operating system for that transition — data-driven, executable, collective.</p>
+  </section>
+
+  <section class="content">
+    <div class="section-num">[01] THE MISSION</div>
+    <h2>Stop guessing. Start executing.</h2>
+    <p style="color: var(--gray-300); font-size: 20px; line-height: 1.7; max-width: 900px;">AI is compressing decades of labor-market change into months. The old model — learn a skill, get a job, compound over 40 years — is broken. We replaced it with a system: assess, reposition, rebuild, deploy. Repeatable, teachable, running 24/7 across 12,483 active members.</p>
+  </section>
+
+  <section class="content">
+    <div class="section-num">[02] PRINCIPLES</div>
+    <h2>How we operate.</h2>
+    <div>
+      <div class="principle">
+        <div class="principle-num">[01]</div>
+        <div>
+          <h3>Systems over advice.</h3>
+          <p>Coaching is subjective and unscalable. We ship repeatable protocols that work whether you're a displaced content writer or a senior backend engineer — because the underlying market dynamics are the same.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">[02]</div>
+        <div>
+          <h3>Data before opinion.</h3>
+          <p>Every recommendation traces back to outcome data from our 12,483 members. Quarterly disruption reports. Salary tracking. We revise the protocol when the data demands it.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">[03]</div>
+        <div>
+          <h3>Income over credentials.</h3>
+          <p>Recovery means money in the bank, not certificates on LinkedIn. Every phase is measured against income outcomes — first dollar, monthly recurring, stability.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">[04]</div>
+        <div>
+          <h3>Collective leverage.</h3>
+          <p>Individuals navigating AI disruption alone lose. Groups running the same protocol, sharing intel, compounding outcomes — win. The community is the product.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="contact">
+    <div class="section-num">[03] CONTACT</div>
+    <h2>Get in touch.</h2>
+    <div class="contact-grid">
+      <div class="contact-item"><h4>GENERAL</h4><a href="mailto:hello@saving.careers">hello@saving.careers</a></div>
+      <div class="contact-item"><h4>PRESS</h4><a href="mailto:press@saving.careers">press@saving.careers</a></div>
+      <div class="contact-item"><h4>PARTNERSHIPS</h4><a href="mailto:partners@saving.careers">partners@saving.careers</a></div>
+      <div class="contact-item"><h4>SUPPORT</h4><a href="mailto:help@saving.careers">help@saving.careers</a></div>
+    </div>
+  </section>
+
+  <section class="content" id="careers">
+    <div class="section-num">[04] CAREERS</div>
+    <h2>Join the team.</h2>
+    <div style="max-width: 1100px;">
+      <div class="job-row">
+        <h4>Senior Product Engineer</h4>
+        <div class="job-meta">ENGINEERING</div>
+        <div class="job-meta">REMOTE • FULL-TIME</div>
+        <a href="#" class="job-btn">APPLY →</a>
+      </div>
+      <div class="job-row">
+        <h4>Community Operations Lead</h4>
+        <div class="job-meta">COMMUNITY</div>
+        <div class="job-meta">REMOTE • FULL-TIME</div>
+        <a href="#" class="job-btn">APPLY →</a>
+      </div>
+      <div class="job-row">
+        <h4>Data Analyst, Disruption Reports</h4>
+        <div class="job-meta">RESEARCH</div>
+        <div class="job-meta">REMOTE • FULL-TIME</div>
+        <a href="#" class="job-btn">APPLY →</a>
+      </div>
+      <div class="job-row">
+        <h4>Content Strategist</h4>
+        <div class="job-meta">CONTENT</div>
+        <div class="job-meta">REMOTE • CONTRACT</div>
+        <a href="#" class="job-btn">APPLY →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <h2>Ready to execute?</h2>
+    <p style="color: var(--gray-300); margin-bottom: 40px; font-size: 18px;">The protocol is waiting.</p>
+    <a href="index.html#email-signup" class="btn-primary">START →</a>
+  </section>
+
+  <footer>SAVING.CAREERS // © 2025 // ALL_RIGHTS_RESERVED</footer>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community — Saving.Careers</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="page.css">
+  <style>
+    .story-card {
+      border: 1px solid var(--gray-800);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 24px;
+      transition: border-color 0.3s;
+    }
+    .story-card:hover { border-color: var(--accent); }
+    .story-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: var(--accent); color: #000;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono); font-size: 24px; font-weight: 700;
+    }
+    .story-quote { font-size: 17px; line-height: 1.6; color: var(--fg); margin-bottom: 16px; }
+    .story-author { font-family: var(--font-mono); font-size: 12px; color: var(--gray-300); letter-spacing: 0.1em; }
+    .story-author .role { color: var(--accent); }
+    .discord-stat {
+      text-align: center;
+      padding: 40px 20px;
+      border: 1px solid var(--gray-800);
+    }
+    .discord-stat .num { font-size: 56px; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 12px; }
+    .discord-stat .label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; color: var(--gray-300); }
+    .event-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 32px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--gray-800);
+      align-items: center;
+    }
+    .event-date {
+      font-family: var(--font-mono);
+      text-align: center;
+    }
+    .event-date .day { font-size: 32px; font-weight: 700; color: var(--accent); line-height: 1; }
+    .event-date .month { font-size: 11px; letter-spacing: 0.2em; color: var(--gray-300); }
+    .event-info h4 { font-size: 20px; margin-bottom: 4px; }
+    .event-info p { color: var(--gray-300); font-size: 14px; font-family: var(--font-mono); }
+    .event-btn {
+      font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.15em;
+      padding: 10px 20px; border: 1px solid var(--accent); color: var(--accent);
+      transition: all 0.2s;
+    }
+    .event-btn:hover { background: var(--accent); color: #000; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-logo">SAVING<span class="dot">.</span>CAREERS</a>
+    <a href="index.html" class="nav-back">← BACK TO HOME</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-eyebrow">[03] COMMUNITY</div>
+    <h1 class="page-title">12,483 <span class="accent">executing</span> together.</h1>
+    <p class="page-sub">Accountability partners, live panels, success stories, and a private Discord of professionals running the exact same protocol you are.</p>
+  </section>
+
+  <section class="content" id="discord">
+    <div class="section-num">[01] DISCORD SERVER</div>
+    <h2>Where the work happens.</h2>
+    <div class="grid-3" style="margin-bottom: 40px;">
+      <div class="discord-stat"><div class="num">12,483</div><div class="label">ACTIVE MEMBERS</div></div>
+      <div class="discord-stat"><div class="num">47</div><div class="label">DAILY MESSAGES/MEMBER</div></div>
+      <div class="discord-stat"><div class="num">24/7</div><div class="label">ACCOUNTABILITY</div></div>
+    </div>
+    <p style="color: var(--gray-300); max-width: 700px; font-size: 17px; line-height: 1.7;">Dedicated channels for each phase of the protocol. Industry-specific rooms. Weekly office hours. Job leads, client intros, code reviews, resume feedback. Access included with any tier.</p>
+  </section>
+
+  <section class="content" id="stories">
+    <div class="section-num">[02] SUCCESS STORIES</div>
+    <h2>Real transitions.<br/>Documented outcomes.</h2>
+    <div style="display: grid; gap: 20px; max-width: 1100px;">
+      <div class="story-card">
+        <div class="story-avatar">SC</div>
+        <div>
+          <p class="story-quote">"Laid off from my UX role in Oct. Followed the protocol day-by-day. Landed first freelance client in 34 days, second in 51. Now earning 40% more than my old salary with 3 retainers."</p>
+          <div class="story-author">SARAH C. // <span class="role">UX → FREELANCE PRODUCT DESIGN</span></div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-avatar">MR</div>
+        <div>
+          <p class="story-quote">"Content marketer watching my whole team get automated. Phase 3 pivoted me into AI-native content ops. Got hired by a Series B as Head of Content Systems. The risk score was the wake-up call."</p>
+          <div class="story-author">MARCUS R. // <span class="role">CONTENT → CONTENT OPS LEAD</span></div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-avatar">PJ</div>
+        <div>
+          <p class="story-quote">"18 months of random applications got me zero offers. 60 days on the protocol got me 3 interviews and 2 offers. The daily execution framework was everything."</p>
+          <div class="story-author">PRIYA J. // <span class="role">DATA ANALYST → ML PLATFORM ENGINEER</span></div>
+        </div>
+      </div>
+      <div class="story-card">
+        <div class="story-avatar">AW</div>
+        <div>
+          <p class="story-quote">"Senior engineer, still employed but seeing the writing on the wall. The system gave me a runway — building defensible skills while still getting a paycheck. Insurance that compounds."</p>
+          <div class="story-author">ALEX W. // <span class="role">BACKEND ENG → STAFF AI ENG</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content" id="events">
+    <div class="section-num">[03] UPCOMING EVENTS</div>
+    <h2>Live panels + workshops.</h2>
+    <div style="max-width: 1100px;">
+      <div class="event-row">
+        <div class="event-date"><div class="day">28</div><div class="month">MAR</div></div>
+        <div class="event-info">
+          <h4>AMA: How to Land Your First Freelance Client</h4>
+          <p>LIVE • 60 MIN • ZOOM</p>
+        </div>
+        <a href="#" class="event-btn">RESERVE →</a>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">04</div><div class="month">APR</div></div>
+        <div class="event-info">
+          <h4>Workshop: Building Your Portfolio in 14 Days</h4>
+          <p>WORKSHOP • 90 MIN • INTERACTIVE</p>
+        </div>
+        <a href="#" class="event-btn">RESERVE →</a>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">11</div><div class="month">APR</div></div>
+        <div class="event-info">
+          <h4>Panel: What's Working in Q2 2025</h4>
+          <p>PANEL • 60 MIN • 4 MEMBERS</p>
+        </div>
+        <a href="#" class="event-btn">RESERVE →</a>
+      </div>
+      <div class="event-row">
+        <div class="event-date"><div class="day">18</div><div class="month">APR</div></div>
+        <div class="event-info">
+          <h4>Meetup: SF Bay Area In-Person</h4>
+          <p>IN-PERSON • SF • 6-9 PM</p>
+        </div>
+        <a href="#" class="event-btn">RESERVE →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <h2>Join the cohort.</h2>
+    <p style="color: var(--gray-300); margin-bottom: 40px; font-size: 18px;">12,483 professionals. One system. Real outcomes.</p>
+    <a href="index.html#email-signup" class="btn-primary">GET ACCESS →</a>
+  </section>
+
+  <footer>SAVING.CAREERS // © 2025 // ALL_RIGHTS_RESERVED</footer>
+</body>
+</html>

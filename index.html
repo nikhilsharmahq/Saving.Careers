@@ -1,0 +1,2487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Saving.Careers — AI Career Survival System | Structured Recovery Plan</title>
+  <meta name="description" content="Don't guess your career. Follow a system. A structured daily framework that guides you from AI job disruption to income and stability. Join 12,000+ professionals taking action.">
+  <meta name="keywords" content="career survival, AI job disruption, career recovery, job loss, career transition, AI automation, unemployment, career system, professional development">
+  <meta name="author" content="Saving.Careers">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saving.careers/">
+  <meta property="og:title" content="Saving.Careers — AI Career Survival System">
+  <meta property="og:description" content="A structured daily framework that guides you from AI job disruption to income and stability. Stop guessing. Follow a system.">
+  <meta property="og:image" content="https://saving.careers/og-image.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://saving.careers/">
+  <meta property="twitter:title" content="Saving.Careers — AI Career Survival System">
+  <meta property="twitter:description" content="A structured daily framework that guides you from AI job disruption to income and stability. Stop guessing. Follow a system.">
+  <meta property="twitter:image" content="https://saving.careers/og-image.png">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  
+  <!-- Enhancements -->
+  <link rel="stylesheet" href="enhancements.css">
+  <link rel="manifest" href="site.webmanifest">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://saving.careers/">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+  
+  <style>
+    /* Preloader - removed, using inline display:none instead */
+    
+    .preloader-logo {
+      width: 120px;
+      height: 120px;
+      position: relative;
+    }
+    
+    .preloader-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .preloader-logo svg path,
+    .preloader-logo svg circle {
+      animation: drawPath 2s ease-in-out infinite;
+    }
+    
+    @keyframes drawPath {
+      0%, 100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+    .preloader-text {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.2em;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --accent: #00ff88;
+      --accent-dim: #00cc6a;
+      --gray-900: #0a0a0a;
+      --gray-800: #1a1a1a;
+      --gray-700: #2a2a2a;
+      --gray-500: #666666;
+      --gray-300: #999999;
+      --danger: #ff3366;
+      --warning: #ffaa00;
+      --nav-text: #ffffff;
+      
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    
+    /* Light mode */
+    body.light-mode {
+      --bg: #ffffff;
+      --fg: #000000;
+      --accent: #00cc6a;
+      --gray-900: #f5f5f5;
+      --gray-800: #e5e5e5;
+      --gray-700: #d0d0d0;
+      --gray-500: #999999;
+      --gray-300: #666666;
+      --nav-text: #000000;
+    }
+    
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-display);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    
+    /* Custom Cursor */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10001;
+      transition: transform 0.05s ease;
+      mix-blend-mode: difference;
+    }
+    
+    body.cursor-hover .cursor {
+      transform: scale(2);
+    }
+    
+    /* Accessibility - skip to content */
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 20px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 12px 24px;
+      text-decoration: none;
+      font-weight: 600;
+      z-index: 10000;
+      border-radius: 4px;
+    }
+    
+    .skip-to-content:focus {
+      top: 20px;
+    }
+    
+    /* Navigation - Minimal */
+    nav {
+      position: fixed;
+      top: 46px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      color: var(--fg);
+    }
+    
+    .logo svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover svg {
+      transform: scale(1.05);
+    }
+    
+    .nav-menu {
+      font-size: 14px;
+      font-family: var(--font-mono);
+      color: var(--fg);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--gray-700);
+      background: transparent;
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: border-color 0.2s ease;
+    }
+    
+    .theme-toggle:hover {
+      border-color: var(--accent);
+    }
+    
+    /* Fade-in animation on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Hero - Kinetic Typography */
+    .hero {
+      min-height: calc(100vh - 140px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 60px 120px;
+    }
+    
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(var(--gray-700) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gray-700) 1px, transparent 1px);
+      background-size: 100px 100px;
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      background: var(--danger);
+      border-radius: 50%;
+      animation: pulse-red 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-red {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
+    }
+    
+    .hero-title {
+      font-size: clamp(60px, 10vw, 160px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 60px;
+      word-wrap: break-word;
+    }
+    
+    .hero-title .line {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-title .accent {
+      color: var(--accent);
+      font-style: italic;
+    }
+    
+    .hero-title .strike {
+      position: relative;
+      color: var(--gray-500);
+    }
+    
+    .hero-title .strike::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 100%;
+      height: 3px;
+      background: var(--danger);
+    }
+    
+    .hero-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 120px;
+    }
+    
+    .hero-stat-group {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    .hero-stat {
+      border-left: 2px solid var(--gray-700);
+      padding-left: 24px;
+    }
+    
+    /* Hero Stats - Animated Counter */
+    .hero-stat-value {
+      font-size: 56px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .hero-stat-value.counting {
+      animation: pulse-glow 0.5s ease;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { text-shadow: 0 0 0 transparent; }
+      50% { text-shadow: 0 0 20px var(--accent); }
+    }
+    
+    .hero-stat-label {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.4;
+    }
+    
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    
+    .btn-primary {
+      padding: 24px 48px;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--fg);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+    
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .btn-secondary {
+      padding: 24px 48px;
+      background: transparent;
+      color: var(--fg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--gray-700);
+      cursor: none;
+      transition: border-color 0.3s ease;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+    
+    /* Section Base */
+    section {
+      padding: 200px 60px;
+      position: relative;
+    }
+    
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--gray-500);
+      letter-spacing: 0.2em;
+      margin-bottom: 40px;
+      display: block;
+    }
+    
+    .section-title {
+      font-size: clamp(48px, 6vw, 96px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 60px;
+      max-width: 1200px;
+    }
+    
+    /* Problem - Data Visualization */
+    .problem-section {
+      background: var(--gray-900);
+    }
+    
+    .disruption-viz {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--bg);
+      padding: 2px;
+      margin-top: 80px;
+      max-width: 1400px;
+    }
+    
+    .disruption-item {
+      background: var(--gray-900);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+    
+    .disruption-item:hover {
+      background: var(--gray-800);
+    }
+    
+    .disruption-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--danger);
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .disruption-item:hover::before {
+      height: 100%;
+    }
+    
+    .disruption-percent {
+      font-size: 72px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--danger);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    
+    .disruption-label {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .disruption-desc {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+    
+    /* Shift Section - Immersive */
+    .shift-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shift-radial {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .shift-content {
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .shift-quote {
+      font-size: clamp(32px, 5vw, 72px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    
+    .shift-quote .highlight {
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .shift-subtext {
+      font-size: 20px;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+    
+    /* System Preview - 3D Cards */
+    .system-section {
+      background: var(--gray-900);
+    }
+    
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 80px;
+      perspective: 1000px;
+    }
+    
+    .system-step {
+      background: var(--bg);
+      padding: 40px 32px;
+      position: relative;
+      transition: transform 0.3s ease;
+      border: 1px solid var(--gray-800);
+    }
+    
+    .system-step:hover {
+      transform: translateY(-8px) rotateX(2deg);
+      border-color: var(--accent);
+    }
+    
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gray-700);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    
+    .system-step:hover .step-num {
+      color: var(--accent);
+    }
+    
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .step-desc {
+      font-size: 13px;
+      color: var(--gray-300);
+      line-height: 1.5;
+    }
+    
+    /* Dashboard - Immersive */
+    .dashboard-section {
+      background: var(--bg);
+      padding: 200px 60px;
+    }
+    
+    #dashboard-root {
+      margin-top: 100px;
+    }
+    
+    /* Social Proof */
+    .social-proof-section {
+      background: var(--gray-900);
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 80px;
+    }
+    
+    .testimonial {
+      background: var(--bg);
+      border: 1px solid var(--gray-800);
+      padding: 40px;
+      position: relative;
+    }
+    
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 80px;
+      color: var(--gray-800);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    
+    .testimonial-text {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+    }
+    
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--gray-700);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    
+    .testimonial-info {
+      flex: 1;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      color: var(--fg);
+    }
+    
+    .testimonial-role {
+      font-size: 12px;
+      color: var(--gray-300);
+    }
+    
+    /* Audience - Asymmetric Layout */
+    .audience-section {
+      background: var(--gray-900);
+    }
+    
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--bg);
+      padding: 2px;
+      margin-top: 80px;
+    }
+    
+    .audience-card {
+      background: var(--bg);
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .audience-card:hover::before {
+      opacity: 0.03;
+    }
+    
+    .audience-number {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--gray-500);
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+    }
+    
+    .audience-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .audience-desc {
+      font-size: 16px;
+      color: var(--gray-300);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    
+    .audience-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .audience-point {
+      font-size: 14px;
+      color: var(--gray-300);
+      padding-left: 24px;
+      position: relative;
+    }
+    
+    .audience-point::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
+    /* Email Capture CTA */
+    .email-cta-section {
+      background: var(--bg);
+    }
+    
+    .email-form-container {
+      max-width: 800px;
+      margin: 80px auto 0;
+      background: var(--gray-900);
+      border: 1px solid var(--gray-800);
+      padding: 60px;
+      position: relative;
+    }
+    
+    .email-form-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+    }
+    
+    .email-form {
+      display: flex;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    
+    .email-input {
+      flex: 1;
+      padding: 20px 24px;
+      background: var(--bg);
+      border: 1px solid var(--gray-700);
+      color: var(--fg);
+      font-size: 16px;
+      font-family: var(--font-display);
+      transition: border-color 0.2s ease;
+    }
+    
+    .email-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    
+    .email-input::placeholder {
+      color: var(--gray-500);
+    }
+    
+    .email-submit {
+      padding: 20px 40px;
+      background: var(--accent);
+      color: var(--bg);
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      cursor: none;
+      font-family: var(--font-display);
+      transition: transform 0.2s ease;
+    }
+    
+    .email-submit:hover {
+      transform: scale(1.05);
+    }
+    
+    .email-privacy {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--gray-500);
+      font-family: var(--font-mono);
+    }
+    
+    .form-error {
+      color: var(--danger);
+      font-size: 14px;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+    }
+    
+    .form-success {
+      color: var(--accent);
+      font-size: 14px;
+      margin-top: 12px;
+      font-family: var(--font-mono);
+    }
+    
+    /* Final CTA - Bold */
+    .final-cta-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .final-cta-content {
+      max-width: 1200px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .final-cta-title {
+      font-size: clamp(60px, 8vw, 120px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+    
+    .final-cta-subtitle {
+      font-size: 24px;
+      margin-bottom: 60px;
+      opacity: 0.8;
+    }
+    
+    .final-cta-buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-inverted {
+      padding: 24px 48px;
+      background: var(--bg);
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: none;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    
+    .btn-inverted:hover {
+      transform: scale(1.05);
+    }
+    
+    .btn-outline {
+      padding: 24px 48px;
+      background: transparent;
+      color: var(--bg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--bg);
+      cursor: none;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: var(--bg);
+      color: var(--accent);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg);
+      padding: 100px 60px 60px;
+      border-top: 1px solid var(--gray-800);
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+      max-width: 1400px;
+    }
+    
+    .footer-brand svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-brand:hover svg {
+      transform: scale(1.05);
+    }
+    
+    .footer-tagline {
+      color: var(--gray-300);
+      font-size: 14px;
+    }
+    
+    .footer-column h4 {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .footer-column a {
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+    
+    .footer-column a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray-500);
+      font-family: var(--font-mono);
+    }
+    
+    /* === CRO ELEMENTS === */
+    
+    /* Urgency Banner */
+    .urgency-banner {
+      position: relative;
+      z-index: 1001;
+      background: linear-gradient(90deg, #ff3366 0%, #ff6699 100%);
+      color: #000;
+      padding: 14px 60px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    
+    .urgency-banner .pulse-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #000;
+      border-radius: 50%;
+      margin-right: 12px;
+      vertical-align: middle;
+      animation: pulse-black 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-black {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+    
+    /* Push nav down below urgency banner */
+    nav {
+      top: 46px;
+    }
+    
+    /* Add top padding to account for fixed banner + nav */
+    main {
+      padding-top: 140px;
+    }
+    
+    /* Theme Toggle - visible in both modes */
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+      border: 2px solid var(--accent);
+      background: var(--bg);
+      color: var(--accent);
+      cursor: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+      border-radius: 50%;
+    }
+    
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: var(--bg);
+      transform: rotate(180deg);
+    }
+    
+    /* Stats Highlight Box */
+    .stats-highlight {
+      background: linear-gradient(135deg, #ff3366 0%, #ff6699 100%);
+      color: #000;
+      padding: 60px 40px;
+      margin: 60px 0 80px;
+      position: relative;
+      overflow: hidden;
+      max-width: 1400px;
+    }
+    
+    .stats-highlight::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.08) 10px,
+        rgba(0,0,0,0.08) 20px
+      );
+      pointer-events: none;
+    }
+    
+    .stats-highlight-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      text-align: center;
+    }
+    
+    .stats-highlight-item {
+      font-family: var(--font-mono);
+      border-right: 2px solid rgba(0,0,0,0.2);
+      padding: 0 20px;
+    }
+    
+    .stats-highlight-item:last-child {
+      border-right: none;
+    }
+    
+    .stats-highlight-value {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    
+    .stats-highlight-label {
+      font-size: 14px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+    
+    /* Exit Intent Popup */
+    .exit-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .exit-popup.active {
+      display: flex;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .exit-popup-content {
+      background: var(--bg);
+      border: 2px solid #ff3366;
+      max-width: 600px;
+      padding: 60px;
+      position: relative;
+      animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @keyframes slideDown {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .exit-popup-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--gray-700);
+      background: transparent;
+      color: var(--fg);
+      font-size: 20px;
+      cursor: none;
+      line-height: 1;
+      transition: all 0.2s ease;
+    }
+    
+    .exit-popup-close:hover {
+      border-color: #ff3366;
+      color: #ff3366;
+    }
+    
+    .exit-popup-title {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #ff3366;
+      line-height: 1.1;
+    }
+    
+    .exit-popup-text {
+      font-size: 18px;
+      color: var(--gray-300);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    
+    .exit-popup-text strong {
+      color: var(--accent);
+    }
+    
+    .exit-popup-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
+    .exit-popup-cta .btn-secondary {
+      padding: 20px 32px;
+      font-size: 14px;
+    }
+    
+    /* Sticky CTA Bar */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--gray-900);
+      border-top: 2px solid var(--accent);
+      padding: 20px 60px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 998;
+      gap: 20px;
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    }
+    
+    .sticky-cta.visible {
+      display: flex;
+      animation: slideUpBar 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    @keyframes slideUpBar {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    
+    .sticky-cta-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+    
+    .sticky-cta-text span {
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    
+    .sticky-cta-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .sticky-cta .btn-primary {
+      padding: 14px 28px;
+      font-size: 13px;
+    }
+    
+    .sticky-cta-close {
+      background: transparent;
+      border: 1px solid var(--gray-700);
+      color: var(--gray-300);
+      font-size: 18px;
+      cursor: none;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    
+    .sticky-cta-close:hover {
+      border-color: var(--fg);
+      color: var(--fg);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 30px 40px;
+      }
+      
+      section {
+        padding: 120px 40px;
+      }
+      
+      .hero {
+        padding: 120px 40px;
+      }
+      
+      .hero-footer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .disruption-viz,
+      .system-grid,
+      .audience-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .email-form {
+        flex-direction: column;
+      }
+    }
+    
+    @media (max-width: 1024px) {
+      .urgency-banner {
+        padding: 12px 20px;
+        font-size: 11px;
+      }
+      
+      .stats-highlight-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-highlight-item {
+        border-right: none;
+        border-bottom: 2px solid rgba(0,0,0,0.2);
+        padding-bottom: 30px;
+      }
+      
+      .stats-highlight-item:last-child {
+        border-bottom: none;
+      }
+      
+      .sticky-cta {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .exit-popup-content {
+        padding: 40px 24px;
+      }
+      
+      .exit-popup-title {
+        font-size: 32px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cursor,
+      .cursor-dot {
+        display: none;
+      }
+      
+      body {
+        cursor: auto;
+      }
+      
+      .btn-primary,
+      .btn-secondary,
+      .btn-inverted,
+      .btn-outline,
+      .email-submit {
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Urgency Banner -->
+  <div class="urgency-banner">
+    <span class="pulse-dot"></span>
+    LIMITED: Early access ending April 30 • Join 12,483 professionals in the system
+  </div>
+
+  <!-- Accessibility -->
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <!-- Preloader -->
+  <div id="preloader" role="status" aria-label="Loading" style="position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:10000;">
+    <div class="preloader-logo">
+      <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(64, 64)">
+          <path d="M -15 -20 Q -20 -15 -20 -7.5 Q -20 0 -15 5 Q -10 10 0 10 Q 10 10 15 5 Q 20 0 20 -7.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          <path d="M 0 10 L 0 25" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                stroke-linecap="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          <path d="M -7.5 17.5 L 0 10 L 7.5 17.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          <circle cx="25" cy="-20" r="2" fill="#ff3366"/>
+        </g>
+      </svg>
+      <div class="preloader-text">LOADING...</div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="logo">
+      <svg width="240" height="64" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Saving.Careers Logo">
+        <g transform="translate(35, 50)">
+          <path d="M -20 -26 Q -26 -20 -26 -10 Q -26 0 -20 7 Q -13 13 0 13 Q 13 13 20 7 Q 26 0 26 -10" 
+                stroke="#00ff88" 
+                stroke-width="5" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <path d="M 0 13 L 0 33" 
+                stroke="#00ff88" 
+                stroke-width="5" 
+                stroke-linecap="round"/>
+          <path d="M -10 23 L 0 13 L 10 23" 
+                stroke="#00ff88" 
+                stroke-width="5" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <circle cx="33" cy="-26" r="3" fill="#ff3366"/>
+        </g>
+        <text x="90" y="62" 
+              font-family="'Space Grotesk', sans-serif" 
+              font-size="32" 
+              font-weight="700" 
+              fill="currentColor" 
+              letter-spacing="1">SAVING.CAREERS</text>
+      </svg>
+    </div>
+    <div class="nav-menu">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+      <button class="mega-menu-trigger" aria-label="Open menu"><span class="menu-dot"></span>MENU</button>
+    </div>
+  </nav>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+  
+  <!-- Grain overlay -->
+  <div class="grain-overlay" aria-hidden="true"></div>
+  
+  <!-- Mega Menu -->
+  <div class="mega-menu" id="megaMenu" role="dialog" aria-label="Main menu">
+    <button class="mega-menu-close" aria-label="Close menu">×</button>
+    <div class="mega-menu-grid">
+      <div class="mega-menu-column">
+        <h4>[01] SYSTEM</h4>
+        <ul>
+          <li><a href="system.html">How It Works<span class="item-desc">5-step protocol overview</span></a></li>
+          <li><a href="system.html#protocol">The Protocol<span class="item-desc">Daily action framework</span></a></li>
+          <li><a href="system.html#tools">Tools & Templates<span class="item-desc">Downloadable resources</span></a></li>
+          <li><a href="system.html#faq">FAQ<span class="item-desc">Common questions</span></a></li>
+        </ul>
+      </div>
+      <div class="mega-menu-column">
+        <h4>[02] RESOURCES</h4>
+        <ul>
+          <li><a href="resources.html">Career Blog<span class="item-desc">Weekly insights</span></a></li>
+          <li><a href="resources.html#guides">Survival Guides<span class="item-desc">Industry-specific playbooks</span></a></li>
+          <li><a href="resources.html#reports">AI Disruption Reports<span class="item-desc">2024 data & analysis</span></a></li>
+          <li><a href="resources.html#tools">Free Tools<span class="item-desc">Risk calculator, resume scanner</span></a></li>
+        </ul>
+      </div>
+      <div class="mega-menu-column">
+        <h4>[03] COMMUNITY</h4>
+        <ul>
+          <li><a href="community.html">Live Panels<span class="item-desc">Weekly Q&A sessions</span></a></li>
+          <li><a href="community.html#discord">Discord Server<span class="item-desc">12,483 members</span></a></li>
+          <li><a href="community.html#stories">Success Stories<span class="item-desc">Real transitions, real results</span></a></li>
+          <li><a href="community.html#events">Events<span class="item-desc">Meetups & workshops</span></a></li>
+        </ul>
+      </div>
+      <div class="mega-menu-column">
+        <h4>[04] COMPANY</h4>
+        <ul>
+          <li><a href="about.html">About<span class="item-desc">Our mission</span></a></li>
+          <li><a href="pricing.html">Pricing<span class="item-desc">Plans & access</span></a></li>
+          <li><a href="about.html#contact">Contact<span class="item-desc">Get in touch</span></a></li>
+          <li><a href="about.html#careers">Careers<span class="item-desc">Join the team</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="mega-menu-footer">
+      <div>SAVING.CAREERS // v2.4.1 // © 2025</div>
+      <div class="status-live"><span class="live-pulse"></span>SYSTEM OPERATIONAL • 12,483 ACTIVE USERS</div>
+    </div>
+  </div>
+  
+  <!-- Live Feed Ticker -->
+  <div class="live-feed" id="liveFeed" role="status" aria-live="polite">
+    <div class="live-feed-avatar">SM</div>
+    <div class="live-feed-content">
+      <div class="live-feed-name">Sarah M.</div>
+      <div class="live-feed-action">joined the system <span class="time">• 12s ago</span></div>
+    </div>
+    <button class="live-feed-close" aria-label="Close">×</button>
+  </div>
+
+  <main id="main-content">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid" aria-hidden="true"></div>
+      
+      <!-- Hero background image with overlay -->
+      <div style="position: absolute; inset: 0; z-index: 0; overflow: hidden;">
+        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80" 
+             alt="" 
+             aria-hidden="true"
+             style="width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: grayscale(1) contrast(1.2);"
+             loading="eager"/>
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, var(--bg) 0%, transparent 40%, var(--bg) 100%);"></div>
+      </div>
+      
+      <!-- Thematic SVG Artwork - Top Right -->
+      <svg style="position: absolute; top: 10%; right: 5%; width: 400px; height: 400px; opacity: 0.15; pointer-events: none;" viewBox="0 0 400 400" fill="none">
+        <!-- Orbital rings -->
+        <circle cx="200" cy="200" r="180" stroke="#00ff88" stroke-width="1" stroke-dasharray="4 4"/>
+        <circle cx="200" cy="200" r="140" stroke="#00ff88" stroke-width="1" stroke-dasharray="2 6"/>
+        <circle cx="200" cy="200" r="100" stroke="#00ff88" stroke-width="1"/>
+        <!-- Data nodes -->
+        <circle cx="200" cy="20" r="4" fill="#00ff88"/>
+        <circle cx="380" cy="200" r="4" fill="#ff3366"/>
+        <circle cx="200" cy="380" r="4" fill="#00ff88"/>
+        <circle cx="20" cy="200" r="4" fill="#00ff88"/>
+        <circle cx="340" cy="60" r="3" fill="#00ff88"/>
+        <circle cx="60" cy="340" r="3" fill="#00ff88"/>
+        <!-- Center hub -->
+        <circle cx="200" cy="200" r="8" fill="#00ff88"/>
+        <circle cx="200" cy="200" r="20" stroke="#00ff88" stroke-width="1" fill="none"/>
+        <!-- Connecting lines -->
+        <line x1="200" y1="200" x2="200" y2="20" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+        <line x1="200" y1="200" x2="380" y2="200" stroke="#ff3366" stroke-width="1" opacity="0.5"/>
+        <line x1="200" y1="200" x2="340" y2="60" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+      </svg>
+      
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="status-indicator" aria-label="Alert"></span>
+          <span>EMERGENCY PROTOCOL ACTIVATED</span>
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="line">Don't <span class="strike">guess</span></span>
+          <span class="line">your <span class="accent">career.</span></span>
+          <span class="line">Follow a system.</span>
+        </h1>
+        
+        <div class="hero-footer">
+          <div class="hero-stat-group">
+            <div class="hero-stat">
+              <div class="hero-stat-value">85%</div>
+              <div class="hero-stat-label">of jobs will be disrupted by AI within 24 months</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">2.4M</div>
+              <div class="hero-stat-label">layoffs in tech sector (2023–2024)</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value">6mo</div>
+              <div class="hero-stat-label">average unemployment duration</div>
+            </div>
+          </div>
+          
+          <div class="hero-cta">
+            <a href="#email-signup" class="btn-primary magnetic"><span class="magnetic-inner">Start Recovery Plan</span></a>
+            <a href="#" class="btn-secondary magnetic"><span class="magnetic-inner">Join Live Panel</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terminal Boot Section -->
+    <section class="terminal-section fade-in" aria-label="System boot sequence">
+      <div class="terminal-section-inner">
+        <div class="terminal-section-copy">
+          <div class="terminal-eyebrow">[SYSTEM_BOOT] // LIVE</div>
+          <h2 class="terminal-headline">We compute <span class="accent">your recovery</span> before you do.</h2>
+          <p class="terminal-sub">Our engine scans 2.4M+ job signals, your skill stack, and market gaps — then outputs a calibrated 90-day protocol. Watch it think.</p>
+          <div class="terminal-meta">
+            <div class="terminal-meta-item"><span class="dot"></span>ENGINE_ACTIVE</div>
+            <div class="terminal-meta-item"><span class="dot warn"></span>3.4ms_RESPONSE</div>
+            <div class="terminal-meta-item"><span class="dot"></span>12,483_RUNNING</div>
+          </div>
+        </div>
+        
+        <!-- Animated Terminal -->
+        <div class="hero-terminal" aria-hidden="true">
+          <div class="hero-terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+            </div>
+            <div class="terminal-title">system@saving.careers ~ /recovery</div>
+          </div>
+          <div class="hero-terminal-body"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section class="problem-section fade-in">
+      <span class="section-number">[01] DISRUPTION</span>
+      <h2 class="section-title">The tasks you were hired for are disappearing.</h2>
+      
+      <!-- Stats Highlight -->
+      <div class="stats-highlight">
+        <div class="stats-highlight-content">
+          <div class="stats-highlight-item">
+            <div class="stats-highlight-value">300K+</div>
+            <div class="stats-highlight-label">Jobs eliminated by AI (2024)</div>
+          </div>
+          <div class="stats-highlight-item">
+            <div class="stats-highlight-value">$64K</div>
+            <div class="stats-highlight-label">Avg salary loss per year</div>
+          </div>
+          <div class="stats-highlight-item">
+            <div class="stats-highlight-value">18mo</div>
+            <div class="stats-highlight-label">To recover without a system</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="disruption-viz">
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">91%</div>
+          <div class="disruption-label">Content Creation</div>
+          <div class="disruption-desc">Writing, design, video editing—automated by GPT-4, Midjourney, Runway</div>
+        </div>
+        
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">78%</div>
+          <div class="disruption-label">Data Analysis</div>
+          <div class="disruption-desc">Reports, dashboards, insights—replaced by Claude, ChatGPT Advanced Data</div>
+        </div>
+        
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">84%</div>
+          <div class="disruption-label">Customer Support</div>
+          <div class="disruption-desc">Tickets, FAQs, onboarding—handled by AI agents and chatbots</div>
+        </div>
+        
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">69%</div>
+          <div class="disruption-label">Software Development</div>
+          <div class="disruption-desc">Boilerplate code, debugging, testing—automated by Cursor, Copilot, v0</div>
+        </div>
+        
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">76%</div>
+          <div class="disruption-label">Marketing Ops</div>
+          <div class="disruption-desc">Email campaigns, SEO, ads—optimized by AI marketing platforms</div>
+        </div>
+        
+        <div class="disruption-item tilt-card">
+          <div class="disruption-percent">88%</div>
+          <div class="disruption-label">Admin Tasks</div>
+          <div class="disruption-desc">Scheduling, data entry, research—eliminated by AI assistants</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Shift -->
+    <section class="shift-section fade-in">
+      <div class="shift-radial" aria-hidden="true"></div>
+      <div class="shift-content">
+        <!-- Before/After Comparison -->
+        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 40px; align-items: center; margin-bottom: 80px; max-width: 1200px;">
+          <div style="background: rgba(255,51,102,0.08); border: 1px solid #ff3366; padding: 40px; text-align: left;">
+            <div style="font-family: var(--font-mono); font-size: 12px; color: #ff3366; letter-spacing: 0.2em; margin-bottom: 20px;">WITHOUT SYSTEM</div>
+            <svg width="100%" height="80" viewBox="0 0 300 80" style="margin-bottom: 20px;">
+              <polyline points="0,20 50,25 100,40 150,50 200,60 250,70 300,75" stroke="#ff3366" stroke-width="3" fill="none"/>
+              <circle cx="300" cy="75" r="5" fill="#ff3366"/>
+            </svg>
+            <div style="font-size: 18px; color: var(--fg); margin-bottom: 12px; font-weight: 600;">Declining income</div>
+            <ul style="list-style: none; color: var(--gray-300); font-size: 14px; line-height: 2;">
+              <li>→ Random job applications</li>
+              <li>→ Skills becoming obsolete</li>
+              <li>→ 18+ months unemployed</li>
+              <li>→ Burnout & anxiety</li>
+            </ul>
+          </div>
+          
+          <div style="font-family: var(--font-mono); font-size: 40px; color: var(--accent);">→</div>
+          
+          <div style="background: rgba(0,255,136,0.08); border: 1px solid var(--accent); padding: 40px; text-align: left;">
+            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--accent); letter-spacing: 0.2em; margin-bottom: 20px;">WITH SYSTEM</div>
+            <svg width="100%" height="80" viewBox="0 0 300 80" style="margin-bottom: 20px;">
+              <polyline points="0,70 50,65 100,55 150,40 200,28 250,15 300,5" stroke="#00ff88" stroke-width="3" fill="none"/>
+              <circle cx="300" cy="5" r="5" fill="#00ff88"/>
+            </svg>
+            <div style="font-size: 18px; color: var(--fg); margin-bottom: 12px; font-weight: 600;">Rising income</div>
+            <ul style="list-style: none; color: var(--gray-300); font-size: 14px; line-height: 2;">
+              <li>→ Structured daily actions</li>
+              <li>→ Future-proof skills</li>
+              <li>→ Income within 30 days</li>
+              <li>→ Confidence & clarity</li>
+            </ul>
+          </div>
+        </div>
+        
+        <p class="shift-quote">
+          This is not about <span class="highlight">learning more.</span><br/>
+          This is about following a <span class="highlight">system.</span>
+        </p>
+        <p class="shift-subtext">
+          A structured, daily framework that guides you from uncertainty to income—built for the age of AI disruption.
+        </p>
+      </div>
+    </section>
+
+    <!-- System -->
+    <section class="system-section fade-in">
+      <span class="section-number">[02] PROTOCOL</span>
+      <h2 class="section-title">Five-step career survival system</h2>
+      
+      <!-- Timeline Journey Visualization -->
+      <div style="max-width: 1400px; margin: 60px 0 80px; padding: 40px; background: var(--bg); border: 1px solid var(--gray-800); position: relative;">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--gray-500); letter-spacing: 0.2em; margin-bottom: 40px;">[YOUR_90_DAY_TRAJECTORY]</div>
+        <svg width="100%" height="200" viewBox="0 0 1200 200" style="display: block;">
+          <!-- Grid lines -->
+          <line x1="0" y1="150" x2="1200" y2="150" stroke="#2a2a2a" stroke-width="1"/>
+          <line x1="0" y1="100" x2="1200" y2="100" stroke="#2a2a2a" stroke-width="1" stroke-dasharray="4 4"/>
+          <line x1="0" y1="50" x2="1200" y2="50" stroke="#2a2a2a" stroke-width="1" stroke-dasharray="4 4"/>
+          
+          <!-- Area fill -->
+          <path d="M 0 150 Q 200 140, 300 130 T 600 90 T 900 50 T 1200 20 L 1200 200 L 0 200 Z" fill="#00ff88" opacity="0.08"/>
+          
+          <!-- Main trajectory line -->
+          <path d="M 0 150 Q 200 140, 300 130 T 600 90 T 900 50 T 1200 20" stroke="#00ff88" stroke-width="3" fill="none"/>
+          
+          <!-- Milestone dots + labels -->
+          <g>
+            <circle cx="0" cy="150" r="8" fill="#ff3366"/>
+            <text x="0" y="185" fill="#999" font-family="JetBrains Mono, monospace" font-size="11">DAY 0</text>
+            <text x="0" y="135" fill="#ff3366" font-family="'Space Grotesk'" font-size="13" font-weight="700">Disrupted</text>
+          </g>
+          <g>
+            <circle cx="300" cy="130" r="7" fill="#00ff88"/>
+            <text x="300" y="185" fill="#999" font-family="JetBrains Mono, monospace" font-size="11">DAY 14</text>
+            <text x="300" y="115" fill="#fff" font-family="'Space Grotesk'" font-size="13" font-weight="700">Assessment</text>
+          </g>
+          <g>
+            <circle cx="600" cy="90" r="7" fill="#00ff88"/>
+            <text x="600" y="185" fill="#999" font-family="JetBrains Mono, monospace" font-size="11">DAY 30</text>
+            <text x="600" y="75" fill="#fff" font-family="'Space Grotesk'" font-size="13" font-weight="700">First Income</text>
+          </g>
+          <g>
+            <circle cx="900" cy="50" r="7" fill="#00ff88"/>
+            <text x="900" y="185" fill="#999" font-family="JetBrains Mono, monospace" font-size="11">DAY 60</text>
+            <text x="900" y="35" fill="#fff" font-family="'Space Grotesk'" font-size="13" font-weight="700">Stability</text>
+          </g>
+          <g>
+            <circle cx="1200" cy="20" r="10" fill="#00ff88" stroke="#fff" stroke-width="2"/>
+            <text x="1150" y="185" fill="#999" font-family="JetBrains Mono, monospace" font-size="11">DAY 90</text>
+            <text x="1100" y="10" fill="#00ff88" font-family="'Space Grotesk'" font-size="13" font-weight="700">Full Recovery</text>
+          </g>
+        </svg>
+      </div>
+      
+      <!-- STICKY SCROLL STEPS (desktop) -->
+      <div class="system-sticky-wrapper">
+        <div class="system-sticky-left">
+          <!-- Visual 0: Assess -->
+          <div class="system-visual active" data-step="0">
+            <svg viewBox="0 0 300 300" fill="none">
+              <circle cx="150" cy="150" r="120" stroke="#00ff88" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
+              <circle cx="150" cy="150" r="80" stroke="#00ff88" stroke-width="1" opacity="0.6"/>
+              <circle cx="150" cy="150" r="40" fill="#00ff88" opacity="0.15"/>
+              <circle cx="150" cy="150" r="6" fill="#ff3366"/>
+              <text x="150" y="250" fill="#00ff88" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle" letter-spacing="2">SCANNING</text>
+              <line x1="30" y1="150" x2="270" y2="150" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+              <line x1="150" y1="30" x2="150" y2="270" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+            </svg>
+          </div>
+          <!-- Visual 1: Reset -->
+          <div class="system-visual" data-step="1">
+            <svg viewBox="0 0 300 300" fill="none">
+              <path d="M 50 250 L 50 150 L 150 150 L 150 80 L 250 80" stroke="#00ff88" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="50" cy="250" r="6" fill="#ff3366"/>
+              <circle cx="150" cy="150" r="5" fill="#00ff88"/>
+              <circle cx="250" cy="80" r="8" fill="#00ff88" stroke="#fff" stroke-width="2"/>
+              <text x="250" y="55" fill="#00ff88" font-family="'Space Grotesk'" font-size="13" font-weight="700" text-anchor="middle">TARGET</text>
+            </svg>
+          </div>
+          <!-- Visual 2: Build -->
+          <div class="system-visual" data-step="2">
+            <svg viewBox="0 0 300 300" fill="none">
+              <rect x="50" y="180" width="40" height="80" fill="#00ff88" opacity="0.3"/>
+              <rect x="100" y="130" width="40" height="130" fill="#00ff88" opacity="0.5"/>
+              <rect x="150" y="90" width="40" height="170" fill="#00ff88" opacity="0.7"/>
+              <rect x="200" y="50" width="40" height="210" fill="#00ff88"/>
+              <line x1="40" y1="260" x2="260" y2="260" stroke="#00ff88" stroke-width="2"/>
+              <text x="150" y="285" fill="#666" font-family="JetBrains Mono, monospace" font-size="11" text-anchor="middle">SKILLS_COMPOUND</text>
+            </svg>
+          </div>
+          <!-- Visual 3: Execute -->
+          <div class="system-visual" data-step="3">
+            <svg viewBox="0 0 300 300" fill="none">
+              <g>
+                <rect x="40" y="60" width="220" height="30" fill="none" stroke="#00ff88" stroke-width="1"/>
+                <rect x="40" y="60" width="220" height="30" fill="#00ff88" opacity="0.1"/>
+                <text x="55" y="80" fill="#00ff88" font-family="JetBrains Mono, monospace" font-size="11">✓ Morning ritual</text>
+              </g>
+              <g>
+                <rect x="40" y="100" width="220" height="30" fill="none" stroke="#00ff88" stroke-width="1"/>
+                <rect x="40" y="100" width="220" height="30" fill="#00ff88" opacity="0.1"/>
+                <text x="55" y="120" fill="#00ff88" font-family="JetBrains Mono, monospace" font-size="11">✓ Skill practice 2h</text>
+              </g>
+              <g>
+                <rect x="40" y="140" width="220" height="30" fill="none" stroke="#00ff88" stroke-width="1"/>
+                <rect x="40" y="140" width="220" height="30" fill="#00ff88" opacity="0.1"/>
+                <text x="55" y="160" fill="#00ff88" font-family="JetBrains Mono, monospace" font-size="11">✓ Outreach 5 leads</text>
+              </g>
+              <g>
+                <rect x="40" y="180" width="220" height="30" fill="none" stroke="#666" stroke-width="1"/>
+                <text x="55" y="200" fill="#666" font-family="JetBrains Mono, monospace" font-size="11">○ Portfolio update</text>
+              </g>
+              <g>
+                <rect x="40" y="220" width="220" height="30" fill="none" stroke="#666" stroke-width="1"/>
+                <text x="55" y="240" fill="#666" font-family="JetBrains Mono, monospace" font-size="11">○ Review & plan</text>
+              </g>
+            </svg>
+          </div>
+          <!-- Visual 4: Deploy -->
+          <div class="system-visual" data-step="4">
+            <svg viewBox="0 0 300 300" fill="none">
+              <defs>
+                <linearGradient id="incomeGrad" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0%" stop-color="#00ff88" stop-opacity="0"/>
+                  <stop offset="100%" stop-color="#00ff88" stop-opacity="0.4"/>
+                </linearGradient>
+              </defs>
+              <path d="M 40 250 Q 100 240, 130 220 T 200 150 T 260 40 L 260 260 L 40 260 Z" fill="url(#incomeGrad)"/>
+              <path d="M 40 250 Q 100 240, 130 220 T 200 150 T 260 40" stroke="#00ff88" stroke-width="3" fill="none"/>
+              <circle cx="260" cy="40" r="10" fill="#00ff88" stroke="#fff" stroke-width="2"/>
+              <text x="150" y="285" fill="#00ff88" font-family="'Space Grotesk'" font-size="20" font-weight="700" text-anchor="middle">$$$ FLOWING</text>
+            </svg>
+          </div>
+        </div>
+        
+        <div class="system-scroll-steps">
+          <div class="system-scroll-step" data-step="0">
+            <div class="step-num">01</div>
+            <h3>Assess Reality</h3>
+            <p>Scan your current role. Identify which tasks AI has already automated, which are next, and which are defensible. No guessing — data-driven risk mapping.</p>
+            <div class="step-tags">
+              <span class="step-tag">RISK_AUDIT</span>
+              <span class="step-tag">SKILL_INVENTORY</span>
+              <span class="step-tag">14_DAYS</span>
+            </div>
+          </div>
+          <div class="system-scroll-step" data-step="1">
+            <div class="step-num">02</div>
+            <h3>Reset Vector</h3>
+            <p>Get personalized direction based on market signals, not trends. A clear target: role, industry, income level — calculated from your existing leverage.</p>
+            <div class="step-tags">
+              <span class="step-tag">MARKET_FIT</span>
+              <span class="step-tag">POSITIONING</span>
+              <span class="step-tag">7_DAYS</span>
+            </div>
+          </div>
+          <div class="system-scroll-step" data-step="2">
+            <div class="step-num">03</div>
+            <h3>Build Arsenal</h3>
+            <p>Develop income-generating skills, not resume padding. Curated learning paths that compound. 2 hours a day, 30 days to employable output.</p>
+            <div class="step-tags">
+              <span class="step-tag">COMPOUND_LEARNING</span>
+              <span class="step-tag">PORTFOLIO_FIRST</span>
+              <span class="step-tag">30_DAYS</span>
+            </div>
+          </div>
+          <div class="system-scroll-step" data-step="3">
+            <div class="step-num">04</div>
+            <h3>Execute Daily</h3>
+            <p>Follow structured tasks that compound progress. Morning ritual, skill practice, outreach, review — same framework every day until momentum takes over.</p>
+            <div class="step-tags">
+              <span class="step-tag">DAILY_PROTOCOL</span>
+              <span class="step-tag">ACCOUNTABILITY</span>
+              <span class="step-tag">ONGOING</span>
+            </div>
+          </div>
+          <div class="system-scroll-step" data-step="4">
+            <div class="step-num">05</div>
+            <h3>Deploy Income</h3>
+            <p>Generate cash flow while rebuilding stability. First paying client in 30 days. Multiple income streams by day 90. Career insurance that compounds.</p>
+            <div class="step-tags">
+              <span class="step-tag">FIRST_INCOME</span>
+              <span class="step-tag">MULTI_STREAM</span>
+              <span class="step-tag">90_DAYS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="system-grid legacy-hide">
+        <div class="system-step">
+          <div class="step-num">01</div>
+          <div class="step-title">Assess Reality</div>
+          <div class="step-desc">Understand which of your tasks AI is replacing</div>
+        </div>
+        
+        <div class="system-step">
+          <div class="step-num">02</div>
+          <div class="step-title">Reset Vector</div>
+          <div class="step-desc">Get personalized direction based on market signals</div>
+        </div>
+        
+        <div class="system-step">
+          <div class="step-num">03</div>
+          <div class="step-title">Build Arsenal</div>
+          <div class="step-desc">Develop income-generating skills, not resume padding</div>
+        </div>
+        
+        <div class="system-step">
+          <div class="step-num">04</div>
+          <div class="step-title">Execute Daily</div>
+          <div class="step-desc">Follow structured tasks that compound progress</div>
+        </div>
+        
+        <div class="system-step">
+          <div class="step-num">05</div>
+          <div class="step-title">Deploy Income</div>
+          <div class="step-desc">Generate cash flow while rebuilding stability</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section class="dashboard-section fade-in">
+      <span class="section-number">[03] INTERFACE</span>
+      <h2 class="section-title">Your daily command center</h2>
+      <div id="dashboard-root"></div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof-section fade-in">
+      <span class="section-number">[04] VALIDATION</span>
+      <h2 class="section-title">Professionals taking action</h2>
+      
+      <!-- Hero image band -->
+      <div style="max-width: 1400px; margin: 60px 0; height: 300px; position: relative; overflow: hidden; border: 1px solid var(--gray-800);">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80" 
+             alt="Team collaborating" 
+             style="width: 100%; height: 100%; object-fit: cover; filter: grayscale(0.6) contrast(1.1);"
+             loading="lazy"/>
+        <div style="position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 0%, transparent 50%, rgba(0,255,136,0.1) 100%);"></div>
+        <div style="position: absolute; bottom: 40px; left: 40px; font-family: var(--font-mono); font-size: 14px; color: var(--accent); letter-spacing: 0.2em;">[ACTIVE_COHORT: 12,483]</div>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p class="testimonial-text">"Lost my marketing job in Feb. This system gave me a clear path. Started freelancing within 3 weeks. Now at $4K/month."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SC</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Sarah Chen</div>
+              <div class="testimonial-role">Ex-Marketing Manager</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">"Finally something that's not another course. Daily tasks kept me accountable. Survival score helped me track real progress."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MP</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Marcus Powell</div>
+              <div class="testimonial-role">Career Transitioner</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">"The AI disruption data was a wake-up call. Started upskilling before layoffs hit. Still employed while others weren't."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JR</div>
+            <div class="testimonial-info">
+              <div class="testimonial-name">Jessica Rodriguez</div>
+              <div class="testimonial-role">Software Engineer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Audience -->
+    <section class="audience-section fade-in">
+      <span class="section-number">[05] TARGET</span>
+      <h2 class="section-title">This system activates if you are:</h2>
+      
+      <!-- Image grid banner -->
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 40px 0 60px; background: var(--gray-800); padding: 2px;">
+        <div style="height: 180px; background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80'); background-size: cover; background-position: center; filter: grayscale(0.7) contrast(1.1);"></div>
+        <div style="height: 180px; background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80'); background-size: cover; background-position: center; filter: grayscale(0.7) contrast(1.1);"></div>
+        <div style="height: 180px; background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&q=80'); background-size: cover; background-position: center; filter: grayscale(0.7) contrast(1.1);"></div>
+        <div style="height: 180px; background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&q=80'); background-size: cover; background-position: center; filter: grayscale(0.7) contrast(1.1);"></div>
+      </div>
+      
+      <div class="audience-grid">
+        <div class="audience-card tilt-card">
+          <div class="audience-number">[A]</div>
+          <div class="audience-title">Recently Displaced</div>
+          <div class="audience-desc">You lost your job and need structured guidance on what to do next.</div>
+          <div class="audience-points">
+            <div class="audience-point">Traditional job search failing</div>
+            <div class="audience-point">Unclear where to start</div>
+            <div class="audience-point">Need immediate income</div>
+          </div>
+        </div>
+        
+        <div class="audience-card tilt-card">
+          <div class="audience-number">[B]</div>
+          <div class="audience-title">Struggling Applicant</div>
+          <div class="audience-desc">Hundreds of applications sent. Few responses. No offers.</div>
+          <div class="audience-points">
+            <div class="audience-point">Skills misaligned with market</div>
+            <div class="audience-point">Overwhelmed by options</div>
+            <div class="audience-point">Resume not converting</div>
+          </div>
+        </div>
+        
+        <div class="audience-card tilt-card">
+          <div class="audience-number">[C]</div>
+          <div class="audience-title">Uncertain Transitioner</div>
+          <div class="audience-desc">Your field is dying. You know it. You don't know where to pivot.</div>
+          <div class="audience-points">
+            <div class="audience-point">Current role being automated</div>
+            <div class="audience-point">No clear transition path</div>
+            <div class="audience-point">Need concrete action plan</div>
+          </div>
+        </div>
+        
+        <div class="audience-card tilt-card">
+          <div class="audience-number">[D]</div>
+          <div class="audience-title">At-Risk Professional</div>
+          <div class="audience-desc">Still employed. But you see the writing on the wall.</div>
+          <div class="audience-points">
+            <div class="audience-point">AI replacing parts of your job</div>
+            <div class="audience-point">Want to upskill preemptively</div>
+            <div class="audience-point">Need safety net strategy</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Email Signup CTA -->
+    <section class="email-cta-section fade-in" id="email-signup">
+      <span class="section-number">[06] ACTIVATION</span>
+      <h2 class="section-title">Start your recovery protocol</h2>
+      
+      <div class="email-form-container">
+        <p style="font-size: 18px; color: var(--gray-300); margin-bottom: 8px;">
+          Get immediate access to the survival system + daily action framework
+        </p>
+        <form class="email-form" id="emailForm" novalidate>
+          <input 
+            type="email" 
+            class="email-input" 
+            placeholder="your.email@example.com" 
+            aria-label="Email address"
+            required
+            id="emailInput"
+          />
+          <button type="submit" class="email-submit">Start Free</button>
+        </form>
+        <div id="formMessage"></div>
+        <p class="email-privacy">
+          NO_SPAM_GUARANTEE // UNSUBSCRIBE_ANYTIME // PRIVACY_PROTECTED
+        </p>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta-section">
+      <div class="final-cta-content">
+        <h2 class="final-cta-title">Get your career back on track.</h2>
+        <p class="final-cta-subtitle">Join 12,000+ professionals taking structured action.</p>
+        <div class="final-cta-buttons">
+          <a href="#email-signup" class="btn-inverted">Activate System</a>
+          <a href="#" class="btn-outline">View Demo</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="280" height="80" viewBox="0 0 500 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Saving.Careers Logo">
+            <g transform="translate(35, 50)">
+              <path d="M -20 -26 Q -26 -20 -26 -10 Q -26 0 -20 7 Q -13 13 0 13 Q 13 13 20 7 Q 26 0 26 -10" 
+                    stroke="#00ff88" 
+                    stroke-width="5" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <path d="M 0 13 L 0 33" 
+                    stroke="#00ff88" 
+                    stroke-width="5" 
+                    stroke-linecap="round"/>
+              <path d="M -10 23 L 0 13 L 10 23" 
+                    stroke="#00ff88" 
+                    stroke-width="5" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <circle cx="33" cy="-26" r="3" fill="#ff3366"/>
+            </g>
+            <text x="90" y="62" 
+                  font-family="'Space Grotesk', sans-serif" 
+                  font-size="32" 
+                  font-weight="700" 
+                  fill="var(--fg)" 
+                  letter-spacing="1">SAVING.CAREERS</text>
+          </svg>
+        </div>
+        <div class="footer-tagline">Career survival system for the AI age</div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">System Overview</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">AI Job Reports</a></li>
+          <li><a href="#">Survival Guides</a></li>
+          <li><a href="#">Research</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>© 2026 Saving.Careers</div>
+      <div>Emergency protocol v2.1</div>
+    </div>
+  </footer>
+
+  <!-- Sticky CTA Bar -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-text">
+      Don't let AI eliminate your income. <span>Start your recovery today.</span>
+    </div>
+    <div class="sticky-cta-actions">
+      <a href="#email-signup" class="btn-primary"><span>Get Started Free</span></a>
+      <button class="sticky-cta-close" id="closeStickyBar" aria-label="Close">×</button>
+    </div>
+  </div>
+
+  <!-- Exit Intent Popup -->
+  <div class="exit-popup" id="exitPopup">
+    <div class="exit-popup-content">
+      <button class="exit-popup-close" id="closeExitPopup" aria-label="Close">×</button>
+      <h2 class="exit-popup-title">Wait — Don't Leave Empty-Handed</h2>
+      <p class="exit-popup-text">
+        Get the <strong>AI Career Survival Checklist</strong> (free) — a 7-day action plan used by 10,000+ professionals to stay employed.
+      </p>
+      <div class="exit-popup-cta">
+        <a href="#email-signup" class="btn-primary" id="exitPopupCta"><span>Send Me The Checklist</span></a>
+        <button class="btn-secondary" id="exitDecline">No Thanks</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics Placeholder -->
+  <script>
+    // Google Analytics 4 placeholder
+    // window.dataLayer = window.dataLayer || [];
+    // function gtag(){dataLayer.push(arguments);}
+    // gtag('js', new Date());
+    // gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <script type="text/babel" src="dashboard-v2.jsx"></script>
+  <script src="enhancements.js" defer></script>
+  
+  <script>
+    // Preloader - simple display:none approach
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.display = 'none';
+        }
+      }, 800);
+    });
+    
+    // Fallback if DOMContentLoaded already fired
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.display = 'none';
+        }
+      }, 800);
+    }
+  </script>
+  
+  <script>
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      body.classList.add('light-mode');
+      themeToggle.textContent = '🌙';
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLight = body.classList.contains('light-mode');
+      themeToggle.textContent = isLight ? '🌙' : '☀';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+    
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let dotX = 0, dotY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dotX = e.clientX;
+      dotY = e.clientY;
+    });
+    
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top = dotY + 'px';
+      
+      requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+    
+    // Cursor hover effect
+    const interactiveElements = document.querySelectorAll('a, button, .disruption-item, .system-step, .audience-card, input, .testimonial');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+    
+    // Scroll-triggered animations (Intersection Observer)
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    
+    // Email form validation and submission
+    const emailForm = document.getElementById('emailForm');
+    const emailInput = document.getElementById('emailInput');
+    const formMessage = document.getElementById('formMessage');
+    
+    emailForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      // Clear previous messages
+      formMessage.innerHTML = '';
+      
+      if (!email) {
+        formMessage.innerHTML = '<div class="form-error">ERROR: Email required</div>';
+        return;
+      }
+      
+      if (!emailRegex.test(email)) {
+        formMessage.innerHTML = '<div class="form-error">ERROR: Invalid email format</div>';
+        return;
+      }
+      
+      // Simulate submission (replace with actual API call)
+      formMessage.innerHTML = '<div class="form-success">SUCCESS: Check your inbox for next steps</div>';
+      emailInput.value = '';
+      
+      // Track event (placeholder for analytics)
+      // gtag('event', 'signup', { method: 'email' });
+    });
+    
+    // Performance: Lazy load images if any added later (only swap if data-src is present)
+    if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll('img[loading="lazy"][data-src]');
+      images.forEach(img => {
+        if (img.dataset.src) img.src = img.dataset.src;
+      });
+    }
+    
+    // === CRO ELEMENTS ===
+    
+    // Sticky CTA Bar (appears after scrolling 50%)
+    const stickyCta = document.getElementById('stickyCta');
+    const closeStickyBar = document.getElementById('closeStickyBar');
+    let stickyBarDismissed = sessionStorage.getItem('stickyBarDismissed');
+    
+    window.addEventListener('scroll', () => {
+      if (stickyBarDismissed) return;
+      
+      const scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      if (scrollPercent > 50) {
+        stickyCta.classList.add('visible');
+      }
+    });
+    
+    closeStickyBar.addEventListener('click', () => {
+      stickyCta.classList.remove('visible');
+      sessionStorage.setItem('stickyBarDismissed', 'true');
+    });
+    
+    // Exit Intent Popup
+    const exitPopup = document.getElementById('exitPopup');
+    const closeExitPopup = document.getElementById('closeExitPopup');
+    const exitDecline = document.getElementById('exitDecline');
+    const exitPopupCta = document.getElementById('exitPopupCta');
+    let exitIntentShown = sessionStorage.getItem('exitIntentShown');
+    
+    document.addEventListener('mouseout', (e) => {
+      if (exitIntentShown) return;
+      if (e.clientY < 10 && e.relatedTarget === null) {
+        exitPopup.classList.add('active');
+        sessionStorage.setItem('exitIntentShown', 'true');
+        exitIntentShown = true;
+      }
+    });
+    
+    closeExitPopup.addEventListener('click', () => {
+      exitPopup.classList.remove('active');
+    });
+    
+    exitDecline.addEventListener('click', () => {
+      exitPopup.classList.remove('active');
+    });
+    
+    exitPopupCta.addEventListener('click', () => {
+      exitPopup.classList.remove('active');
+    });
+    
+    // Close popup on outside click
+    exitPopup.addEventListener('click', (e) => {
+      if (e.target === exitPopup) {
+        exitPopup.classList.remove('active');
+      }
+    });
+    
+    // Animated counter for hero stats
+    const animateCounter = (element, target) => {
+      const duration = 2000;
+      const start = 0;
+      const increment = target / (duration / 16);
+      let current = start;
+      
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target;
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 16);
+    };
+    
+    // Trigger counter animation on scroll
+    const heroStats = document.querySelectorAll('.hero-stat-value');
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.animated) {
+          entry.target.classList.add('counting');
+          entry.target.dataset.animated = 'true';
+          // You can add counter animation here if needed
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    heroStats.forEach(stat => statsObserver.observe(stat));
+  </script>
+
+</body>
+</html>

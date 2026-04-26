@@ -1,0 +1,280 @@
+/* ========================================
+   SHARED PAGE STYLESHEET (menu pages)
+   ======================================== */
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --accent: #00ff88;
+  --danger: #ff3366;
+  --gray-300: #999;
+  --gray-500: #666;
+  --gray-800: #1a1a1a;
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: var(--accent); text-decoration: none; }
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--gray-800);
+  z-index: 100;
+}
+.nav-logo {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--fg);
+}
+.nav-logo .dot { color: var(--accent); }
+.nav-back {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gray-300);
+  letter-spacing: 0.15em;
+  padding: 10px 20px;
+  border: 1px solid var(--gray-800);
+  transition: all 0.2s;
+}
+.nav-back:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+
+.page-hero {
+  padding: 180px 40px 120px;
+  max-width: 1400px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--gray-800);
+}
+.page-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.page-title {
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  text-wrap: balance;
+}
+.page-title .accent { color: var(--accent); }
+.page-sub {
+  font-size: 22px;
+  color: var(--gray-300);
+  max-width: 700px;
+  line-height: 1.5;
+}
+
+section.content {
+  padding: 100px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.25em;
+  margin-bottom: 24px;
+}
+h2 {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 48px;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+h3 { font-size: 24px; font-weight: 600; margin-bottom: 12px; }
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+.card {
+  border: 1px solid var(--gray-800);
+  padding: 32px;
+  transition: all 0.3s;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+.card p {
+  color: var(--gray-300);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.card-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+details {
+  border-bottom: 1px solid var(--gray-800);
+  padding: 24px 0;
+}
+summary {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::-webkit-details-marker { display: none; }
+summary::after {
+  content: '+';
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+details[open] summary::after { transform: rotate(45deg); }
+details p {
+  color: var(--gray-300);
+  margin-top: 16px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.cta-block {
+  text-align: center;
+  padding: 120px 40px;
+  border-top: 1px solid var(--gray-800);
+  background: radial-gradient(ellipse at center, rgba(0,255,136,0.08), transparent 70%);
+}
+.cta-block h2 {
+  font-size: clamp(40px, 6vw, 72px);
+  margin-bottom: 24px;
+}
+.btn-primary {
+  display: inline-block;
+  background: var(--accent);
+  color: #000;
+  padding: 20px 40px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  transition: all 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,255,136,0.3);
+}
+
+footer {
+  padding: 60px 40px 40px;
+  border-top: 1px solid var(--gray-800);
+  text-align: center;
+  color: var(--gray-500);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2px;
+  background: var(--gray-800);
+  border: 1px solid var(--gray-800);
+  max-width: 1200px;
+}
+.price-card {
+  background: var(--bg);
+  padding: 48px 40px;
+  position: relative;
+}
+.price-card.featured {
+  background: linear-gradient(180deg, rgba(0,255,136,0.05), var(--bg));
+  border: 1px solid var(--accent);
+}
+.price-card .badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--accent);
+  color: #000;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+}
+.price-tier {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+.price-amount {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.price-amount small { font-size: 18px; color: var(--gray-300); font-weight: 400; }
+.price-features {
+  list-style: none;
+  margin: 32px 0;
+}
+.price-features li {
+  padding: 10px 0;
+  border-top: 1px solid var(--gray-800);
+  color: var(--gray-300);
+  font-size: 14px;
+}
+.price-features li::before {
+  content: '✓ ';
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  nav { padding: 16px 20px; }
+  .page-hero, section.content { padding-left: 20px; padding-right: 20px; }
+}

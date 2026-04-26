@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Saving.Careers — AI Career Survival System | Structured Recovery Plan</title>
+  <meta name="description" content="Don't guess your career. Follow a system. A structured daily framework that guides you from AI job disruption to income and stability. Join 12,000+ professionals taking action.">
+  <meta name="keywords" content="career survival, AI job disruption, career recovery, job loss, career transition, AI automation, unemployment, career system, professional development">
+  <meta name="author" content="Saving.Careers">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://saving.careers/">
+  <meta property="og:title" content="Saving.Careers — AI Career Survival System">
+  <meta property="og:description" content="A structured daily framework that guides you from AI job disruption to income and stability. Stop guessing. Follow a system.">
+  <meta property="og:image" content="https://saving.careers/og-image.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://saving.careers/">
+  <meta property="twitter:title" content="Saving.Careers — AI Career Survival System">
+  <meta property="twitter:description" content="A structured daily framework that guides you from AI job disruption to income and stability. Stop guessing. Follow a system.">
+  <meta property="twitter:image" content="https://saving.careers/og-image.png">
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="manifest" href="site.webmanifest">
+  
+  <!-- Theme Color -->
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://saving.careers/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+  
+  <style>
+    /* Preloader */
+    .preloader {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+    
+    .preloader.hidden {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    
+    .preloader-logo {
+      width: 120px;
+      height: 120px;
+      position: relative;
+    }
+    
+    .preloader-logo svg {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .preloader-logo svg path,
+    .preloader-logo svg circle {
+      animation: drawPath 2s ease-in-out infinite;
+    }
+    
+    @keyframes drawPath {
+      0%, 100% {
+        opacity: 1;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+    
+    .preloader-text {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #666;
+      letter-spacing: 0.2em;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --bg: #000000;
+      --fg: #ffffff;
+      --accent: #00ff88;
+      --accent-dim: #00cc6a;
+      --gray-900: #0a0a0a;
+      --gray-800: #1a1a1a;
+      --gray-700: #2a2a2a;
+      --gray-500: #666666;
+      --gray-300: #999999;
+      --danger: #ff3366;
+      --warning: #ffaa00;
+      
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    
+    ::selection {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: var(--font-display);
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    
+    /* Custom Cursor */
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      mix-blend-mode: difference;
+    }
+    
+    .cursor-dot {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10001;
+      transition: transform 0.05s ease;
+      mix-blend-mode: difference;
+    }
+    
+    body.cursor-hover .cursor {
+      transform: scale(2);
+    }
+    
+    /* Navigation - Minimal */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      mix-blend-mode: difference;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .logo:hover svg {
+      transform: scale(1.1);
+    }
+    
+    .nav-menu {
+      font-size: 14px;
+      font-family: var(--font-mono);
+      color: var(--fg);
+      letter-spacing: 0.05em;
+    }
+    
+    /* Hero - Kinetic Typography */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 60px;
+    }
+    
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      opacity: 0.03;
+      background-image: 
+        linear-gradient(var(--gray-700) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gray-700) 1px, transparent 1px);
+      background-size: 100px 100px;
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      max-width: 1400px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-300);
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .status-indicator {
+      width: 8px;
+      height: 8px;
+      background: var(--danger);
+      border-radius: 50%;
+      animation: pulse-red 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-red {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.7); }
+      50% { opacity: 0.7; box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
+    }
+    
+    .hero-title {
+      font-size: clamp(60px, 10vw, 160px);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      margin-bottom: 60px;
+      word-wrap: break-word;
+    }
+    
+    .hero-title .line {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-title .accent {
+      color: var(--accent);
+      font-style: italic;
+    }
+    
+    .hero-title .strike {
+      position: relative;
+      color: var(--gray-500);
+    }
+    
+    .hero-title .strike::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--danger);
+      animation: strikethrough 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+    
+
+    
+    @keyframes strikethrough {
+      to {
+        width: 100%;
+      }
+    }
+    
+    .hero-footer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 120px;
+    }
+    
+    .hero-stat-group {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    
+    .hero-stat {
+      border-left: 2px solid var(--gray-700);
+      padding-left: 24px;
+    }
+    
+    .hero-stat-value {
+      font-size: 56px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .hero-stat-label {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.4;
+    }
+    
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+    
+    .btn-primary {
+      padding: 24px 48px;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--fg);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .btn-primary:hover::before {
+      transform: translateX(0);
+    }
+    
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .btn-secondary {
+      padding: 24px 48px;
+      background: transparent;
+      color: var(--fg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--gray-700);
+      cursor: none;
+      transition: border-color 0.3s ease;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--accent);
+    }
+    
+    /* Section Base */
+    section {
+      padding: 200px 60px;
+      position: relative;
+    }
+    
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--gray-500);
+      letter-spacing: 0.2em;
+      margin-bottom: 40px;
+      display: block;
+    }
+    
+    .section-title {
+      font-size: clamp(48px, 6vw, 96px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 60px;
+      max-width: 1200px;
+    }
+    
+    /* Problem - Data Visualization */
+    .problem-section {
+      background: var(--gray-900);
+    }
+    
+    .disruption-viz {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--bg);
+      padding: 2px;
+      margin-top: 80px;
+      max-width: 1400px;
+    }
+    
+    .disruption-item {
+      background: var(--gray-900);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s ease;
+    }
+    
+    .disruption-item:hover {
+      background: var(--gray-800);
+    }
+    
+    .disruption-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 0;
+      background: var(--danger);
+      transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .disruption-item:hover::before {
+      height: 100%;
+    }
+    
+    .disruption-percent {
+      font-size: 72px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      color: var(--danger);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    
+    .disruption-label {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .disruption-desc {
+      font-size: 14px;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+    
+    /* Shift Section - Immersive */
+    .shift-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shift-radial {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .shift-content {
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .shift-quote {
+      font-size: clamp(32px, 5vw, 72px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    
+    .shift-quote .highlight {
+      color: var(--accent);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .shift-subtext {
+      font-size: 20px;
+      color: var(--gray-300);
+      line-height: 1.6;
+    }
+    
+    /* System Preview - 3D Cards */
+    .system-section {
+      background: var(--gray-900);
+    }
+    
+    .system-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 24px;
+      margin-top: 80px;
+      perspective: 1000px;
+    }
+    
+    .system-step {
+      background: var(--bg);
+      padding: 40px 32px;
+      position: relative;
+      transition: transform 0.3s ease;
+      border: 1px solid var(--gray-800);
+    }
+    
+    .system-step:hover {
+      transform: translateY(-8px) rotateX(2deg);
+      border-color: var(--accent);
+    }
+    
+    .step-num {
+      font-family: var(--font-mono);
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--gray-700);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    
+    .system-step:hover .step-num {
+      color: var(--accent);
+    }
+    
+    .step-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .step-desc {
+      font-size: 13px;
+      color: var(--gray-300);
+      line-height: 1.5;
+    }
+    
+    /* Dashboard - Immersive */
+    .dashboard-section {
+      background: var(--bg);
+      padding: 200px 60px;
+    }
+    
+    #dashboard-root {
+      margin-top: 100px;
+    }
+    
+    /* Audience - Asymmetric Layout */
+    .audience-section {
+      background: var(--gray-900);
+    }
+    
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--bg);
+      padding: 2px;
+      margin-top: 80px;
+    }
+    
+    .audience-card {
+      background: var(--bg);
+      padding: 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .audience-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, var(--accent) 100%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .audience-card:hover::before {
+      opacity: 0.03;
+    }
+    
+    .audience-number {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--gray-500);
+      letter-spacing: 0.2em;
+      margin-bottom: 24px;
+    }
+    
+    .audience-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .audience-desc {
+      font-size: 16px;
+      color: var(--gray-300);
+      line-height: 1.6;
+      margin-bottom: 32px;
+    }
+    
+    .audience-points {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .audience-point {
+      font-size: 14px;
+      color: var(--gray-300);
+      padding-left: 24px;
+      position: relative;
+    }
+    
+    .audience-point::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+    
+    /* Final CTA - Bold */
+    .final-cta-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .final-cta-content {
+      max-width: 1200px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .final-cta-title {
+      font-size: clamp(60px, 8vw, 120px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 40px;
+    }
+    
+    .final-cta-subtitle {
+      font-size: 24px;
+      margin-bottom: 60px;
+      opacity: 0.8;
+    }
+    
+    .final-cta-buttons {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-inverted {
+      padding: 24px 48px;
+      background: var(--bg);
+      color: var(--accent);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: none;
+      cursor: none;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+    
+    .btn-inverted:hover {
+      transform: scale(1.05);
+    }
+    
+    .btn-outline {
+      padding: 24px 48px;
+      background: transparent;
+      color: var(--bg);
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border: 2px solid var(--bg);
+      cursor: none;
+      font-family: var(--font-display);
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: var(--bg);
+      color: var(--accent);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg);
+      padding: 100px 60px 60px;
+      border-top: 1px solid var(--gray-800);
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+      max-width: 1400px;
+    }
+    
+    .footer-brand svg {
+      transition: transform 0.3s ease;
+    }
+    
+    .footer-brand:hover svg {
+      transform: scale(1.05);
+    }
+    
+    .footer-tagline {
+      color: var(--gray-300);
+      font-size: 14px;
+    }
+    
+    .footer-column h4 {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      margin-bottom: 24px;
+    }
+    
+    .footer-column ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .footer-column a {
+      color: var(--gray-300);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+    
+    .footer-column a:hover {
+      color: var(--accent);
+    }
+    
+    .footer-bottom {
+      padding-top: 40px;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray-500);
+      font-family: var(--font-mono);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 30px 40px;
+      }
+      
+      section {
+        padding: 120px 40px;
+      }
+      
+      .hero {
+        padding: 120px 40px;
+      }
+      
+      .hero-footer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      
+      .disruption-viz,
+      .system-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cursor,
+      .cursor-dot {
+        display: none;
+      }
+      
+      body {
+        cursor: auto;
+      }
+      
+      .btn-primary,
+      .btn-secondary,
+      .btn-inverted,
+      .btn-outline {
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-logo">
+      <svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g transform="translate(64, 64)">
+          <!-- S curve -->
+          <path d="M -15 -20 Q -20 -15 -20 -7.5 Q -20 0 -15 5 Q -10 10 0 10 Q 10 10 15 5 Q 20 0 20 -7.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          
+          <!-- Arrow pointing up -->
+          <path d="M 0 10 L 0 25" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                stroke-linecap="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          
+          <path d="M -7.5 17.5 L 0 10 L 7.5 17.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-dasharray="100"
+                stroke-dashoffset="0"/>
+          
+          <!-- Accent dot -->
+          <circle cx="25" cy="-20" r="2" fill="#ff3366"/>
+        </g>
+      </svg>
+      <div class="preloader-text">LOADING...</div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+  <div class="cursor-dot"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">
+      <svg width="180" height="48" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Logo mark -->
+        <g transform="translate(25, 50)">
+          <path d="M -15 -20 Q -20 -15 -20 -7.5 Q -20 0 -15 5 Q -10 10 0 10 Q 10 10 15 5 Q 20 0 20 -7.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <path d="M 0 10 L 0 25" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                stroke-linecap="round"/>
+          <path d="M -7.5 17.5 L 0 10 L 7.5 17.5" 
+                stroke="#00ff88" 
+                stroke-width="4" 
+                fill="none" 
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+          <circle cx="25" cy="-20" r="2" fill="#ff3366"/>
+        </g>
+        <!-- Text -->
+        <text x="70" y="52" 
+              font-family="'Space Grotesk', sans-serif" 
+              font-size="24" 
+              font-weight="700" 
+              fill="#ffffff" 
+              letter-spacing="1">SAVING</text>
+        <text x="180" y="52" 
+              font-family="'Space Grotesk', sans-serif" 
+              font-size="24" 
+              font-weight="700" 
+              fill="#00ff88" 
+              letter-spacing="1">.CAREERS</text>
+      </svg>
+    </div>
+    <div class="nav-menu">[MENU]</div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="status-indicator"></span>
+        <span>EMERGENCY PROTOCOL ACTIVATED</span>
+      </div>
+      
+      <h1 class="hero-title">
+        <span class="line">Don't <span class="strike">guess</span></span>
+        <span class="line">your <span class="accent">career.</span></span>
+        <span class="line">Follow a system.</span>
+      </h1>
+      
+      <div class="hero-footer">
+        <div class="hero-stat-group">
+          <div class="hero-stat">
+            <div class="hero-stat-value">85%</div>
+            <div class="hero-stat-label">of jobs will be disrupted by AI within 24 months</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">2.4M</div>
+            <div class="hero-stat-label">layoffs in tech sector (2023–2024)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-value">6mo</div>
+            <div class="hero-stat-label">average unemployment duration</div>
+          </div>
+        </div>
+        
+        <div class="hero-cta">
+          <a href="#" class="btn-primary"><span>Start Recovery Plan</span></a>
+          <a href="#" class="btn-secondary">Join Live Panel</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem-section">
+    <span class="section-number">[01] DISRUPTION</span>
+    <h2 class="section-title">The tasks you were hired for are disappearing.</h2>
+    
+    <div class="disruption-viz">
+      <div class="disruption-item">
+        <div class="disruption-percent">91%</div>
+        <div class="disruption-label">Content Creation</div>
+        <div class="disruption-desc">Writing, design, video editing—automated by GPT-4, Midjourney, Runway</div>
+      </div>
+      
+      <div class="disruption-item">
+        <div class="disruption-percent">78%</div>
+        <div class="disruption-label">Data Analysis</div>
+        <div class="disruption-desc">Reports, dashboards, insights—replaced by Claude, ChatGPT Advanced Data</div>
+      </div>
+      
+      <div class="disruption-item">
+        <div class="disruption-percent">84%</div>
+        <div class="disruption-label">Customer Support</div>
+        <div class="disruption-desc">Tickets, FAQs, onboarding—handled by AI agents and chatbots</div>
+      </div>
+      
+      <div class="disruption-item">
+        <div class="disruption-percent">69%</div>
+        <div class="disruption-label">Software Development</div>
+        <div class="disruption-desc">Boilerplate code, debugging, testing—automated by Cursor, Copilot, v0</div>
+      </div>
+      
+      <div class="disruption-item">
+        <div class="disruption-percent">76%</div>
+        <div class="disruption-label">Marketing Ops</div>
+        <div class="disruption-desc">Email campaigns, SEO, ads—optimized by AI marketing platforms</div>
+      </div>
+      
+      <div class="disruption-item">
+        <div class="disruption-percent">88%</div>
+        <div class="disruption-label">Admin Tasks</div>
+        <div class="disruption-desc">Scheduling, data entry, research—eliminated by AI assistants</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shift -->
+  <section class="shift-section">
+    <div class="shift-radial"></div>
+    <div class="shift-content">
+      <p class="shift-quote">
+        This is not about <span class="highlight">learning more.</span><br/>
+        This is about following a <span class="highlight">system.</span>
+      </p>
+      <p class="shift-subtext">
+        A structured, daily framework that guides you from uncertainty to income—built for the age of AI disruption.
+      </p>
+    </div>
+  </section>
+
+  <!-- System -->
+  <section class="system-section">
+    <span class="section-number">[02] PROTOCOL</span>
+    <h2 class="section-title">Five-step career survival system</h2>
+    
+    <div class="system-grid">
+      <div class="system-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Assess Reality</div>
+        <div class="step-desc">Understand which of your tasks AI is replacing</div>
+      </div>
+      
+      <div class="system-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Reset Vector</div>
+        <div class="step-desc">Get personalized direction based on market signals</div>
+      </div>
+      
+      <div class="system-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Build Arsenal</div>
+        <div class="step-desc">Develop income-generating skills, not resume padding</div>
+      </div>
+      
+      <div class="system-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Execute Daily</div>
+        <div class="step-desc">Follow structured tasks that compound progress</div>
+      </div>
+      
+      <div class="system-step">
+        <div class="step-num">05</div>
+        <div class="step-desc">Generate cash flow while rebuilding stability</div>
+        <div class="step-title">Deploy Income</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard -->
+  <section class="dashboard-section">
+    <span class="section-number">[03] INTERFACE</span>
+    <h2 class="section-title">Your daily command center</h2>
+    <div id="dashboard-root"></div>
+  </section>
+
+  <!-- Audience -->
+  <section class="audience-section">
+    <span class="section-number">[04] TARGET</span>
+    <h2 class="section-title">This system activates if you are:</h2>
+    
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="audience-number">[A]</div>
+        <div class="audience-title">Recently Displaced</div>
+        <div class="audience-desc">You lost your job and need structured guidance on what to do next.</div>
+        <div class="audience-points">
+          <div class="audience-point">Traditional job search failing</div>
+          <div class="audience-point">Unclear where to start</div>
+          <div class="audience-point">Need immediate income</div>
+        </div>
+      </div>
+      
+      <div class="audience-card">
+        <div class="audience-number">[B]</div>
+        <div class="audience-title">Struggling Applicant</div>
+        <div class="audience-desc">Hundreds of applications sent. Few responses. No offers.</div>
+        <div class="audience-points">
+          <div class="audience-point">Skills misaligned with market</div>
+          <div class="audience-point">Overwhelmed by options</div>
+          <div class="audience-point">Resume not converting</div>
+        </div>
+      </div>
+      
+      <div class="audience-card">
+        <div class="audience-number">[C]</div>
+        <div class="audience-title">Uncertain Transitioner</div>
+        <div class="audience-desc">Your field is dying. You know it. You don't know where to pivot.</div>
+        <div class="audience-points">
+          <div class="audience-point">Current role being automated</div>
+          <div class="audience-point">No clear transition path</div>
+          <div class="audience-point">Need concrete action plan</div>
+        </div>
+      </div>
+      
+      <div class="audience-card">
+        <div class="audience-number">[D]</div>
+        <div class="audience-title">At-Risk Professional</div>
+        <div class="audience-desc">Still employed. But you see the writing on the wall.</div>
+        <div class="audience-points">
+          <div class="audience-point">AI replacing parts of your job</div>
+          <div class="audience-point">Want to upskill preemptively</div>
+          <div class="audience-point">Need safety net strategy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta-section">
+    <div class="final-cta-content">
+      <h2 class="final-cta-title">Start your recovery protocol.</h2>
+      <p class="final-cta-subtitle">Join 12,000+ professionals taking structured action.</p>
+      <div class="final-cta-buttons">
+        <a href="#" class="btn-inverted">Activate System</a>
+        <a href="#" class="btn-outline">View Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg width="220" height="60" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: block; margin-bottom: 16px;">
+            <!-- Logo mark -->
+            <g transform="translate(25, 50)">
+              <path d="M -15 -20 Q -20 -15 -20 -7.5 Q -20 0 -15 5 Q -10 10 0 10 Q 10 10 15 5 Q 20 0 20 -7.5" 
+                    stroke="#00ff88" 
+                    stroke-width="4" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <path d="M 0 10 L 0 25" 
+                    stroke="#00ff88" 
+                    stroke-width="4" 
+                    stroke-linecap="round"/>
+              <path d="M -7.5 17.5 L 0 10 L 7.5 17.5" 
+                    stroke="#00ff88" 
+                    stroke-width="4" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
+              <circle cx="25" cy="-20" r="2" fill="#ff3366"/>
+            </g>
+            <!-- Text -->
+            <text x="70" y="52" 
+                  font-family="'Space Grotesk', sans-serif" 
+                  font-size="24" 
+                  font-weight="700" 
+                  fill="#ffffff" 
+                  letter-spacing="1">SAVING</text>
+            <text x="180" y="52" 
+                  font-family="'Space Grotesk', sans-serif" 
+                  font-size="24" 
+                  font-weight="700" 
+                  fill="#00ff88" 
+                  letter-spacing="1">.CAREERS</text>
+          </svg>
+        </div>
+        <div class="footer-tagline">Career survival system for the AI age</div>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">System Overview</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Case Studies</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">AI Job Reports</a></li>
+          <li><a href="#">Survival Guides</a></li>
+          <li><a href="#">Research</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div>© 2026 Saving.Careers</div>
+      <div>Emergency protocol v2.1</div>
+    </div>
+  </footer>
+
+  <script type="text/babel" src="dashboard-v2.jsx"></script>
+  
+  <script>
+    // Preloader - hide immediately on DOM ready using inline styles
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          preloader.style.visibility = 'hidden';
+          preloader.style.pointerEvents = 'none';
+        }
+      }, 800);
+    });
+    
+    // Fallback if DOMContentLoaded already fired
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(() => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+          preloader.style.opacity = '0';
+          preloader.style.visibility = 'hidden';
+          preloader.style.pointerEvents = 'none';
+        }
+      }, 800);
+    }
+  </script>
+  
+  <script>
+    // Custom cursor
+    const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let dotX = 0, dotY = 0;
+    
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      dotX = e.clientX;
+      dotY = e.clientY;
+    });
+    
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.15;
+      cursorY += (mouseY - cursorY) * 0.15;
+      
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top = dotY + 'px';
+      
+      requestAnimationFrame(animateCursor);
+    }
+    
+    animateCursor();
+    
+    // Cursor hover effect
+    const interactiveElements = document.querySelectorAll('a, button, .disruption-item, .system-step, .audience-card');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
