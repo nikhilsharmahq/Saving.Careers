@@ -44,6 +44,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Saving.Careers AI Career Survival System",
+    "description": "A structured daily framework that guides you from AI job disruption to income and stability.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Saving.Careers",
+      "sameAs": "https://saving-careers.vercel.app"
+    },
+    "courseCode": "SCCS-01",
+    "educationalLevel": "Professional"
+  }
+  </script>
+  
+  <!-- Core Dependencies -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="database.js?v=1.4"></script>
+  
   <script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
@@ -92,6 +113,11 @@
     @keyframes pulse {
       0%, 100% { opacity: 1; }
       50% { opacity: 0.3; }
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
     }
     
     * {
@@ -522,6 +548,10 @@
       transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
+    .disruption-item.animate::before {
+      height: 100%;
+    }
+    
     .disruption-item:hover::before {
       height: 100%;
     }
@@ -920,6 +950,136 @@
       font-size: 24px;
       margin-bottom: 60px;
       opacity: 0.8;
+    }
+    
+    .protocol-btn:disabled {
+      opacity: 0.5;
+      cursor: wait;
+    }
+
+    .step-complete-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--gray-700);
+      color: var(--gray-400);
+      padding: 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .step-complete-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(0, 255, 136, 0.05);
+    }
+
+    /* Unified Command Ribbon */
+    .command-ribbon {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 10001;
+      display: flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .ribbon-content {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ribbon-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .ribbon-center {
+      flex: 1;
+      max-width: 400px;
+      margin: 0 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mini-progress-track {
+      height: 2px;
+      background: var(--gray-800);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .mini-steps {
+      display: flex;
+      justify-content: space-between;
+      color: var(--gray-600);
+      font-size: 8px;
+    }
+
+    .m-step.active {
+      color: var(--accent);
+    }
+
+    .ribbon-right {
+      color: var(--gray-500);
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      .ribbon-center { display: none !important; }
+    }
+    
+    /* Dashboard Log */
+    .dashboard-log {
+      margin-top: 40px;
+      background: #050505;
+      border-left: 2px solid var(--accent);
+      padding: 20px;
+      font-family: var(--font-mono);
+      max-height: 200px;
+      overflow-y: auto;
+    }
+    
+    .log-entry {
+      margin-bottom: 8px;
+      font-size: 11px;
+      opacity: 0.8;
+      animation: logSlideIn 0.3s ease-out;
+    }
+    
+    @keyframes logSlideIn {
+      from { transform: translateX(-10px); opacity: 0; }
+      to { transform: translateX(0); opacity: 0.8; }
+    }
+    
+    .log-time {
+      color: var(--gray-600);
+      margin-right: 10px;
+    }
+    
+    .log-msg {
+      color: #fff;
     }
     
     .final-cta-buttons {
@@ -1404,14 +1564,45 @@
         cursor: pointer;
       }
     }
+    .email-cta-section .hero-terminal {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .email-cta-section .hero-terminal-body {
+      background: var(--bg);
+      padding-top: 10px !important;
+    }
   </style>
 </head>
 <body>
+  <!-- Unified Command Ribbon (Persistent Header) -->
+  <div id="survival-header" class="command-ribbon">
+    <div class="ribbon-content">
+      <div class="ribbon-left">
+        <span class="pulse-dot"></span>
+        <span id="global-counter">ACTIVATING...</span>
+      </div>
+      
+      <!-- Progress Bar (Visible only in dashboard mode) -->
+      <div id="survival-progress" class="ribbon-center" style="display: none;">
+        <div class="mini-progress-track">
+          <div class="progress-fill" style="width: 20%;"></div>
+        </div>
+        <div class="mini-steps">
+          <span class="m-step active">1</span>
+          <span class="m-step">2</span>
+          <span class="m-step">3</span>
+          <span class="m-step">4</span>
+          <span class="m-step">5</span>
+        </div>
+      </div>
 
-  <!-- Urgency Banner -->
-  <div class="urgency-banner">
-    <span class="pulse-dot"></span>
-    LIMITED: Early access ending April 30 • Join 12,483 professionals in the system
+      <div class="ribbon-right">
+        <span class="protocol-id">SCCS_v1.4</span>
+      </div>
+    </div>
   </div>
 
   <!-- Accessibility -->
@@ -1621,8 +1812,8 @@
           </div>
           
           <div class="hero-cta">
-            <a href="#email-signup" class="btn-primary magnetic"><span class="magnetic-inner">Start Recovery Plan</span></a>
-            <a href="#" class="btn-secondary magnetic"><span class="magnetic-inner">Join Live Panel</span></a>
+            <a href="#email-signup" class="btn-primary magnetic open-assessment"><span class="magnetic-inner">Test Your Survival Score</span></a>
+            <a href="#system" class="btn-secondary magnetic"><span class="magnetic-inner">View Recovery System</span></a>
           </div>
         </div>
       </div>
@@ -1675,7 +1866,10 @@
           </div>
           <div class="stats-highlight-item">
             <div class="stats-highlight-value">18mo</div>
-            <div class="stats-highlight-label">To recover without a system</div>
+            <p>You're not just losing a job. You're losing the game of leverage. The systems you rely on were built for a world that no longer exists.</p>
+            <div style="margin-top: 32px;">
+              <a href="#email-signup" class="btn-outline magnetic">UPGRADE_TO_SCCS_v1.0</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1903,6 +2097,23 @@
             <div class="step-num">01</div>
             <h3>Assess Reality</h3>
             <p>Scan your current role. Identify which tasks AI has already automated, which are next, and which are defensible. No guessing — data-driven risk mapping.</p>
+            
+            <!-- Interactive Tool (Hidden initially) -->
+            <div class="onboarding-tool" id="step1-tool" style="display: none;">
+              <div class="tool-header">DISRUPTION_AUDIT_V1.0</div>
+              <div class="tool-fields">
+                <input type="text" placeholder="Enter your current job title..." class="tool-input">
+                <button class="tool-btn">ANALYZE_RISK</button>
+              </div>
+              <div class="tool-result"></div>
+            </div>
+
+            <ul class="step-details">
+              <li>Comprehensive AI disruption audit</li>
+              <li>Defensibility score calculation</li>
+              <li>Skill inventory mapping</li>
+            </ul>
+            <button class="step-complete-btn" onclick="window.completeStep(0, this)">COMPLETE_PHASE_01</button>
             <div class="step-tags">
               <span class="step-tag">RISK_AUDIT</span>
               <span class="step-tag">SKILL_INVENTORY</span>
@@ -1913,6 +2124,11 @@
             <div class="step-num">02</div>
             <h3>Reset Vector</h3>
             <p>Get personalized direction based on market signals, not trends. A clear target: role, industry, income level — calculated from your existing leverage.</p>
+            <ul class="step-details">
+              <li>High-velocity niche identification</li>
+              <li>Leverage point extraction</li>
+              <li>90-day trajectory plotting</li>
+            </ul>
             <div class="step-tags">
               <span class="step-tag">MARKET_FIT</span>
               <span class="step-tag">POSITIONING</span>
@@ -1923,6 +2139,11 @@
             <div class="step-num">03</div>
             <h3>Build Arsenal</h3>
             <p>Develop income-generating skills, not resume padding. Curated learning paths that compound. 2 hours a day, 30 days to employable output.</p>
+            <ul class="step-details">
+              <li>Curated skill-acquisition stack</li>
+              <li>Proof-of-work project templates</li>
+              <li>Feedback-loop integration</li>
+            </ul>
             <div class="step-tags">
               <span class="step-tag">COMPOUND_LEARNING</span>
               <span class="step-tag">PORTFOLIO_FIRST</span>
@@ -1933,6 +2154,11 @@
             <div class="step-num">04</div>
             <h3>Execute Daily</h3>
             <p>Follow structured tasks that compound progress. Morning ritual, skill practice, outreach, review — same framework every day until momentum takes over.</p>
+            <ul class="step-details">
+              <li>Personalized daily task queues</li>
+              <li>Accountability tracking system</li>
+              <li>Weekly progress audit</li>
+            </ul>
             <div class="step-tags">
               <span class="step-tag">DAILY_PROTOCOL</span>
               <span class="step-tag">ACCOUNTABILITY</span>
@@ -1943,12 +2169,27 @@
             <div class="step-num">05</div>
             <h3>Deploy Income</h3>
             <p>Generate cash flow while rebuilding stability. First paying client in 30 days. Multiple income streams by day 90. Career insurance that compounds.</p>
+            <ul class="step-details">
+              <li>Income experiment deployment</li>
+              <li>Client acquisition framework</li>
+              <li>Revenue scaling strategy</li>
+            </ul>
+            <ul class="step-details">
+              <li>Income experiment deployment</li>
+              <li>Client acquisition framework</li>
+              <li>Revenue scaling strategy</li>
+            </ul>
             <div class="step-tags">
               <span class="step-tag">FIRST_INCOME</span>
-              <span class="step-tag">MULTI_STREAM</span>
-              <span class="step-tag">90_DAYS</span>
+              <span class="p-step">MULTI_STREAM</span>
+              <span class="p-step">90_DAYS</span>
             </div>
           </div>
+        </div>
+
+        <!-- Dashboard Session Log (Revealed on activation) -->
+        <div id="session-log" class="dashboard-log" style="display: none;">
+          <div class="log-entry"><span class="log-time">[00:00:00]</span> <span class="log-msg">INITIALIZING_DASHBOARD_MODE...</span></div>
         </div>
       </div>
       
@@ -1957,6 +2198,14 @@
           <div class="step-num">01</div>
           <div class="step-title">Assess Reality</div>
           <div class="step-desc">Understand which of your tasks AI is replacing</div>
+        </div>
+        
+        <div class="system-step">
+          <div class="stat-value">67%</div>
+          <div class="stat-label">AVERAGE_RISK</div>
+        </div>
+        <div class="activation-cta" style="margin-top: 40px; text-align: center;">
+          <a href="#email-signup" class="btn-primary magnetic">ACTIVATE_PROTOCOL_NOW</a>
         </div>
         
         <div class="system-step">
@@ -2108,22 +2357,95 @@
       <span class="section-number">[06] ACTIVATION</span>
       <h2 class="section-title">Start your recovery protocol</h2>
       
-      <div class="email-form-container">
-        <p style="font-size: 18px; color: var(--gray-300); margin-bottom: 8px;">
-          Get immediate access to the survival system + daily action framework
-        </p>
-        <form class="email-form" id="emailForm" novalidate>
-          <input 
-            type="email" 
-            class="email-input" 
-            placeholder="your.email@example.com" 
-            aria-label="Email address"
-            required
-            id="emailInput"
-          />
-          <button type="submit" class="email-submit">Start Free</button>
-        </form>
-        <div id="formMessage"></div>
+        <div class="email-form-container">
+          <p style="font-size: 18px; color: var(--gray-300); margin-bottom: 32px;">
+            Get immediate access to the survival system + daily action framework
+          </p>
+          
+          <!-- Terminal Styled Form Container -->
+          <div class="hero-terminal" style="max-width: 100%; margin-top: 40px;">
+            <div class="hero-terminal-header">
+              <div class="terminal-dots">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+              </div>
+              <div class="terminal-title">RECOVERY_ACTIVATION_PROTOCOL.exe</div>
+              <div style="margin-left: auto; font-size: 9px; color: var(--accent); opacity: 0.7;">[STATUS: SECURE]</div>
+            </div>
+            <div class="hero-terminal-body" style="padding: 20px 40px; min-height: auto;">
+              <div id="native-form-container">
+                <form id="survival-form" class="native-terminal-form">
+                  <div class="form-group">
+                    <label>FULL_NAME</label>
+                    <input type="text" name="name" placeholder="ENTER NAME..." required>
+                  </div>
+                  <div class="form-group">
+                    <label>EMAIL_ADDRESS</label>
+                    <input type="email" name="email" placeholder="ENTER EMAIL..." required>
+                  </div>
+                  <div class="form-group">
+                    <label>CURRENT_INDUSTRY</label>
+                    <select name="industry">
+                      <option value="tech">TECH / SOFTWARE</option>
+                      <option value="creative">CREATIVE / MEDIA</option>
+                      <option value="finance">FINANCE / OPERATIONS</option>
+                      <option value="other">OTHER</option>
+                    </select>
+                  </div>
+                  <button type="submit" class="protocol-btn">ACTIVATE_BLUEPRINT</button>
+                </form>
+                <div id="form-status" style="margin-top: 15px; font-family: var(--font-mono); font-size: 11px;"></div>
+              </div>
+              
+              <script>
+                document.getElementById('survival-form').addEventListener('submit', async (e) => {
+                  e.preventDefault();
+                  const form = e.target;
+                  const btn = form.querySelector('button');
+                  const status = document.getElementById('form-status');
+                  
+                  const formData = {
+                    name: form.name.value,
+                    email: form.email.value,
+                    industry: form.industry.value
+                  };
+                  
+                  // Store email for session tracking
+                  localStorage.setItem('sccs_user_email', formData.email);
+                  
+                  btn.disabled = true;
+                  btn.textContent = 'SYNCING_PROTOCOL...';
+                  status.textContent = 'INITIALIZING_SECURE_SYNC...';
+                  
+                  // Force Dashboard after 3 seconds even if sync hangs
+                  const safetyTimeout = setTimeout(() => {
+                    console.warn('Sync taking too long - forcing dashboard activation');
+                    if (typeof window.triggerActivation === 'function') window.triggerActivation();
+                  }, 3500);
+
+                  try {
+                    const result = await window.saveLead(formData);
+                    clearTimeout(safetyTimeout); // Sync finished in time
+                    
+                    if (result.success) {
+                      status.style.color = '#00ff88';
+                      status.textContent = result.partial ? 'SYNC_PARTIAL: ACTIVATING...' : 'SYNC_COMPLETE: ACTIVATING...';
+                      
+                      if (typeof window.triggerActivation === 'function') {
+                        window.triggerActivation();
+                      }
+                    }
+                  } catch (err) {
+                    clearTimeout(safetyTimeout);
+                    console.error('Manual Sync Error:', err);
+                    // Critical Fallback: Activate anyway
+                    if (typeof window.triggerActivation === 'function') window.triggerActivation();
+                  }
+                });
+              </script>
+            </div>
+          </div>
         <p class="email-privacy">
           NO_SPAM_GUARANTEE // UNSUBSCRIBE_ANYTIME // PRIVACY_PROTECTED
         </p>
@@ -2248,8 +2570,15 @@
     // gtag('config', 'GA_MEASUREMENT_ID');
   </script>
 
+  <!-- Assessment Modal -->
+  <div id="assessment-modal">
+    <button class="modal-close" aria-label="Close Assessment">&times;</button>
+    <div id="assessment-root"></div>
+  </div>
+
   <script type="text/babel" src="dashboard-v2.jsx"></script>
   <script src="enhancements.js" defer></script>
+  <script type="text/babel" src="assessment.jsx"></script>
   
   <script>
     // Preloader - simple display:none approach
@@ -2354,38 +2683,134 @@
     
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
     
-    // Email form validation and submission
-    const emailForm = document.getElementById('emailForm');
-    const emailInput = document.getElementById('emailInput');
-    const formMessage = document.getElementById('formMessage');
-    
-    emailForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const email = emailInput.value.trim();
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      
-      // Clear previous messages
-      formMessage.innerHTML = '';
-      
-      if (!email) {
-        formMessage.innerHTML = '<div class="form-error">ERROR: Email required</div>';
-        return;
+    // GHL Form Submission Listener - Enhanced Robust Version
+    window.addEventListener('message', (event) => {
+      // Debug: Log all incoming messages (uncomment next line to see everything GHL sends)
+      // console.log('Incoming Message from Iframe:', event.data);
+
+      const isGHLSubmit = (data) => {
+        if (!data) return false;
+        
+        // Check for common GHL event types
+        const ghlTypes = ['v_form_submit', 'form_submit', 'onFormSubmit', 'v_form_success', 'form_success'];
+        if (ghlTypes.includes(data.type) || ghlTypes.includes(data.action)) return true;
+        
+        // Check for string-based messages
+        if (typeof data === 'string' && (data.includes('form_submit') || data.includes('v_form_submit'))) return true;
+        
+        // Check for objects that have 'formId' and 'action'
+        if (data.formId && (data.action === 'submit' || data.type === 'submit')) return true;
+
+        return false;
+      };
+
+      if (isGHLSubmit(event.data)) {
+        triggerActivation();
       }
-      
-      if (!emailRegex.test(email)) {
-        formMessage.innerHTML = '<div class="form-error">ERROR: Invalid email format</div>';
-        return;
-      }
-      
-      // Simulate submission (replace with actual API call)
-      formMessage.innerHTML = '<div class="form-success">SUCCESS: Check your inbox for next steps</div>';
-      emailInput.value = '';
-      
-      // Track event (placeholder for analytics)
-      // gtag('event', 'signup', { method: 'email' });
     });
-    
+
+    // Fallback: Trigger Activation on any GHL success message detection
+    window.triggerActivation = function(isSilent = false) {
+      console.log('PROTOCOL_ACTIVATED: Activation Sequence Initiated');
+      
+      // Save State
+      localStorage.setItem('sccs_protocol_active', 'true');
+      
+      // 1. Transform UI to Dashboard Mode
+      document.body.classList.add('dashboard-mode');
+      
+      const formContainer = document.getElementById('native-form-container');
+      if (formContainer) formContainer.style.display = 'none';
+      
+      const progressHeader = document.getElementById('survival-progress');
+      if (progressHeader) progressHeader.style.display = 'block';
+      
+      const stepTool = document.getElementById('step1-tool');
+      if (stepTool) stepTool.style.display = 'block';
+      
+      const sessionLog = document.getElementById('session-log');
+      if (sessionLog) sessionLog.style.display = 'block';
+      
+      const terminalTitle = document.querySelector('.email-cta-section .terminal-title');
+      if (terminalTitle) {
+        terminalTitle.textContent = 'PROTOCOL_ACTIVATED.exe';
+        terminalTitle.style.color = '#00ff88';
+        terminalTitle.style.textShadow = '0 0 10px #00ff88';
+      }
+
+      // 2. Scroll to Command Center (unless silent)
+      if (!isSilent) {
+        setTimeout(() => {
+          const systemSection = document.getElementById('system');
+          if (systemSection) {
+            systemSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Update Section Title
+            const sectionTitle = systemSection.querySelector('.section-title');
+            if (sectionTitle) sectionTitle.textContent = 'Survival Command Center';
+
+            systemSection.style.transition = 'box-shadow 0.5s ease';
+            systemSection.style.boxShadow = '0 0 80px rgba(0, 255, 136, 0.4)';
+            setTimeout(() => { if(systemSection) systemSection.style.boxShadow = ''; }, 2500);
+          }
+        }, 800);
+      } else {
+        const systemSection = document.getElementById('system');
+        if (systemSection) {
+          const sectionTitle = systemSection.querySelector('.section-title');
+          if (sectionTitle) sectionTitle.textContent = 'Survival Command Center';
+        }
+      }
+      
+      // Add Log Entry
+      if (typeof window.addActivityLog === 'function') {
+        window.addActivityLog('SCCS_PROTOCOL_ACTIVE_v1.4');
+      }
+    };
+
+    // Interactive Step Completion
+    window.completeStep = async function(stepNum, btn) {
+      btn.disabled = true;
+      btn.textContent = 'SYNCING...';
+      
+      try {
+        if (typeof window.toggleStep === 'function') {
+          await window.toggleStep(stepNum, true);
+        }
+        
+        btn.textContent = 'PHASE_COMPLETE';
+        btn.style.background = 'rgba(0, 255, 136, 0.2)';
+        btn.style.color = 'var(--accent)';
+        
+        // Update Progress Bar
+        const progressFill = document.querySelector('.progress-fill');
+        if (progressFill) {
+          const newWidth = Math.max(parseInt(progressFill.style.width), (stepNum / 5) * 100);
+          progressFill.style.width = `${newWidth}%`;
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'RETRY_SYNC';
+      }
+    };
+
+    // Secondary Fallback: Polling for "Success" state in the GHL container
+    let activationTriggered = false;
+    const fallbackInterval = setInterval(() => {
+      if (activationTriggered) { clearInterval(fallbackInterval); return; }
+      
+      const ghlContainer = document.getElementById('ghl-form-container');
+      if (ghlContainer) {
+        // If the iframe height collapses or changes drastically, it often means a success message appeared
+        const iframe = ghlContainer.querySelector('iframe');
+        if (iframe && iframe.offsetHeight > 0 && iframe.offsetHeight < 150) {
+          activationTriggered = true;
+          triggerActivation();
+          clearInterval(fallbackInterval);
+        }
+      }
+    }, 2000);
+
     // Performance: Lazy load images if any added later (only swap if data-src is present)
     if ('loading' in HTMLImageElement.prototype) {
       const images = document.querySelectorAll('img[loading="lazy"][data-src]');

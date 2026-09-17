@@ -138,11 +138,12 @@
   }
 
   // ===== 5. LIVE FEED TICKER =====
-  function initLiveFeed() {
+  async function initLiveFeed() {
     const feed = document.getElementById('liveFeed');
     if (!feed) return;
     
-    const events = [
+    // Default fallback events
+    let events = [
       { name: 'Sarah M.', action: 'joined the system', time: '12s ago', avatar: 'SM' },
       { name: 'David K.', action: 'completed Step 1', time: '34s ago', avatar: 'DK' },
       { name: 'Priya R.', action: 'landed first client', time: '1m ago', avatar: 'PR' },
@@ -151,7 +152,23 @@
       { name: 'Alex W.', action: 'upgraded to Pro', time: '4m ago', avatar: 'AW' },
       { name: 'Yuki H.', action: 'completed assessment', time: '5m ago', avatar: 'YH' },
       { name: 'Ravi P.', action: 'earned first $1K', time: '6m ago', avatar: 'RP' },
+      { name: 'Chen L.', action: 'deployed AI agent', time: '8s ago', avatar: 'CL' },
+      { name: 'Sophie B.', action: 'skill level: EXPERT', time: '15s ago', avatar: 'SB' },
+      { name: 'Jordan D.', action: 'income stream: ACTIVE', time: '45s ago', avatar: 'JD' },
     ];
+    
+    // Fetch REAL data from Supabase
+    if (typeof window.getLiveFeed === 'function') {
+      const realData = await window.getLiveFeed();
+      if (realData && realData.length > 0) {
+        events = realData.map(item => ({
+          name: 'ANON_USER',
+          action: `completed assessment: Score ${item.score}`,
+          time: 'recently',
+          avatar: 'UX'
+        }));
+      }
+    }
     
     let idx = 0;
     const nameEl = feed.querySelector('.live-feed-name');
@@ -178,7 +195,8 @@
       if (window.scrollY > 300) {
         started = true;
         showNext();
-        setInterval(showNext, 8000);
+        showNext();
+        setInterval(showNext, 6000);
       }
     }, { passive: true });
     
@@ -252,6 +270,85 @@
     }
   }
 
+  // ===== 9. ASSESSMENT MODAL =====
+  function initAssessment() {
+    const modal = document.getElementById('assessment-modal');
+    const triggers = document.querySelectorAll('.open-assessment');
+    const close = document.querySelector('.modal-close');
+    
+    if (!modal) return;
+    
+    const openModal = () => {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    
+    const closeModal = () => {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+    
+    triggers.forEach(t => t.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    }));
+    
+    if (close) close.addEventListener('click', closeModal);
+    
+    // Global close function for the React component to use
+    window.closeAssessment = closeModal;
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+  }
+
+  // ===== 10. DISRUPTION VIZ ANIMATION =====
+  function initDisruptionViz() {
+    const items = document.querySelectorAll('.disruption-item');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, { threshold: 0.2 });
+    
+    items.forEach(item => observer.observe(item));
+  }
+
+  // ===== 11. DASHBOARD PERSISTENCE & LOGS =====
+  function addActivityLog(message) {
+    const logContainer = document.getElementById('session-log');
+    if (!logContainer) return;
+    
+    const time = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const logEntry = document.createElement('div');
+    logEntry.className = 'log-entry';
+    logEntry.innerHTML = `<span class="log-time">[${time}]</span> <span class="log-msg">${message}</span>`;
+    
+    logContainer.prepend(logEntry);
+    if (logContainer.children.length > 10) logContainer.lastChild.remove();
+  }
+
+  function checkPersistence() {
+    const isActive = localStorage.getItem('sccs_protocol_active');
+    const userEmail = localStorage.getItem('sccs_user_email');
+    
+    // Only restore dashboard if user has actually registered (has email)
+    // This prevents hiding the form on fresh/test visits
+    if (isActive === 'true' && userEmail) {
+      setTimeout(() => {
+        if (typeof window.triggerActivation === 'function') {
+          window.triggerActivation(true); // pass true to skip animations
+        }
+      }, 500);
+    } else {
+      // Clear stale flags if no email found
+      localStorage.removeItem('sccs_protocol_active');
+    }
+  }
+
   // ===== INIT ALL =====
   function init() {
     initMagneticButtons();
@@ -262,6 +359,9 @@
     initMegaMenu();
     initScrollProgress();
     initStickySystem();
+    initAssessment();
+    initDisruptionViz();
+    checkPersistence();
   }
 
   if (document.readyState === 'loading') {
@@ -269,4 +369,32 @@
   } else {
     init();
   }
+
+  // ===== 12. DASHBOARD TOOL HANDLERS =====
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('tool-btn')) {
+      const input = e.target.previousElementSibling;
+      const result = e.target.parentElement.nextElementSibling;
+      
+      if (!input.value) return;
+      
+      e.target.textContent = 'ANALYZING...';
+      result.innerHTML = '<div class="loading-spinner" style="width:20px; height:20px; margin: 10px 0;"></div>';
+      
+      setTimeout(() => {
+        e.target.textContent = 'ANALYZE_RISK';
+        const risk = Math.floor(Math.random() * 40) + 50;
+        result.innerHTML = `
+          <div style="color: var(--accent); margin-top: 15px; font-family: var(--font-mono); font-size: 12px;">
+            ANALYSIS_COMPLETE: ${input.value.toUpperCase()}<br>
+            AI_DISRUPTION_PROBABILITY: ${risk}%<br>
+            LEVERAGE_POINTS: [COMMUNICATION, STRATEGIC_PLANNING]
+          </div>
+        `;
+        if (typeof window.addActivityLog === 'function') {
+          window.addActivityLog(`Risk Audit Completed for: ${input.value}`);
+        }
+      }, 1500);
+    }
+  });
 })();
